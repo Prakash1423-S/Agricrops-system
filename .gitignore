@@ -1,0 +1,29 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs & Environment
+*.log
+.env
+.env.local
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.venv/
+env/
+venv/
+
+# Node artifacts
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor / IDE directories
+.vscode/
+.idea/
+*.suo
+*.user
