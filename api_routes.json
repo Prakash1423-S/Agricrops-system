@@ -1,0 +1,26 @@
+{
+  "system": "AgriCrops Pro Knowledge Engine",
+  "version": "2.4.0",
+  "endpoints": [
+    {
+      "path": "/api/status",
+      "method": "GET",
+      "description": "Returns system health, active modules and version."
+    },
+    {
+      "path": "/api/crops",
+      "method": "GET",
+      "description": "Returns full catalogue of supported crops with NPK, soil and climate parameters."
+    }
+  ],
+  "supported_crops_count": 12,
+  "supported_categories": [
+    "Cereals & Grains",
+    "Pulses & Legumes",
+    "Cash Crops & Fibers",
+    "Vegetables & Greens",
+    "Fruits & Orchards",
+    "Spices & Plantation",
+    "Soil & Fertilizers"
+  ]
+}
