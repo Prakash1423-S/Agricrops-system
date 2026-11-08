@@ -4,7 +4,1359 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriCrops Pro — Smart Agricultural Intelligence & Crop Advisory System</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <style>
+/* 
+ * AgriCrops System - Modern Agricultural Intelligence Platform Styles
+ * Features lush agro-green color palette, card components, folder animations,
+ * chat UI, and responsive dashboard layouts.
+ */
+
+:root {
+  --primary: #15803d;         /* Forest Emerald */
+  --primary-hover: #166534;
+  --primary-light: #dcfce7;
+  --primary-dark: #14532d;
+  --accent: #d97706;          /* Harvest Amber */
+  --accent-light: #fef3c7;
+  --secondary: #0284c7;       /* Irrigation Blue */
+  --secondary-light: #e0f2fe;
+  
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-surface: #f1f5f9;
+  
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  
+  --border-color: #e2e8f0;
+  --border-focus: #22c55e;
+  
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* App Header */
+.app-navbar {
+  background: linear-gradient(135deg, #14532d 0%, #15803d 60%, #166534 100%);
+  color: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(20, 83, 45, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-icon-bubble {
+  background: rgba(255, 255, 255, 0.2);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: inset 0 0 8px rgba(255,255,255,0.25);
+}
+
+.brand-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-tagline {
+  font-size: 0.82rem;
+  color: #bbf7d0;
+  font-weight: 400;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 4px;
+  border-radius: var(--radius-md);
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: #e2e8f0;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tab-btn.active {
+  background: #ffffff;
+  color: var(--primary-dark);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Main Container */
+.main-wrapper {
+  max-width: 1400px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem 3rem 1.5rem;
+}
+
+/* Tab Panels */
+.tab-content {
+  display: none;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Top Quick Stat Bar */
+.quick-status-strip {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.strip-icon {
+  font-size: 1.35rem;
+}
+
+.strip-text strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-main);
+}
+
+.strip-text span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* 1. ADVISORY / Q&A SECTION */
+.advisory-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .advisory-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  height: 720px;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 1.15rem 1.5rem;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-title h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.chat-title p {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: #fafaf9;
+}
+
+.msg-bubble {
+  max-width: 88%;
+  display: flex;
+  gap: 0.85rem;
+  animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.msg-user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.msg-bot {
+  align-self: flex-start;
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.avatar-user {
+  background: #0284c7;
+  color: #fff;
+}
+
+.avatar-bot {
+  background: #15803d;
+  color: #fff;
+}
+
+.msg-body {
+  background: #ffffff;
+  padding: 1.1rem 1.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.94rem;
+  color: var(--text-main);
+}
+
+.msg-user .msg-body {
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+  border-bottom-right-radius: 2px;
+}
+
+.msg-bot .msg-body {
+  border-bottom-left-radius: 2px;
+}
+
+.response-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  color: var(--primary-dark);
+}
+
+.response-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+
+.badge {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.badge.blue { background: #e0f2fe; color: #0369a1; }
+.badge.green { background: #dcfce7; color: #15803d; }
+.badge.amber { background: #fef3c7; color: #b45309; }
+
+.section-block {
+  margin-top: 0.85rem;
+  padding: 0.75rem 0.9rem;
+  background: #f8fafc;
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.section-block h5 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.35rem;
+}
+
+.section-block p, .section-block div {
+  font-size: 0.86rem;
+  color: #334155;
+  line-height: 1.45;
+}
+
+.npk-box {
+  background: #ecfdf5;
+  border: 1px dashed #10b981;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.badge-yield {
+  background: #fef08a;
+  color: #854d0e;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.ph-tag {
+  background: #fef3c7;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.suggestions-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.chip-btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* Chat Input Bar */
+.chat-input-area {
+  padding: 1rem 1.5rem;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+}
+
+.quick-prompts-bar {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.65rem;
+  white-space: nowrap;
+}
+
+.quick-prompt-pill {
+  font-size: 0.78rem;
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  padding: 4px 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.15s ease;
+}
+
+.quick-prompt-pill:hover {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.input-form {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.85rem 1.15rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chat-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+.btn-send {
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-send:hover {
+  background: var(--primary-hover);
+}
+
+/* Right Side Quick Reference Cards */
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.side-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.side-card h4 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-mini-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mini-category-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-size: 0.86rem;
+  color: #334155;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.mini-category-btn:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  color: var(--primary-dark);
+}
+
+/* 2. FOLDER EXPLORER SECTION */
+.explorer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.explorer-header {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to right, #ffffff, #f8fafc);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.explorer-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.folder-header-icon {
+  font-size: 2.2rem;
+}
+
+.explorer-title h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.explorer-breadcrumbs {
+  background: #f1f5f9;
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.crumb {
+  cursor: pointer;
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.crumb:hover {
+  text-decoration: underline;
+}
+
+.crumb-separator {
+  color: #94a3b8;
+}
+
+.active-leaf {
+  color: var(--text-main);
+  font-weight: 600;
+  cursor: default;
+}
+
+.explorer-body {
+  padding: 2rem;
+  min-height: 480px;
+}
+
+/* Folder Tiles Grid */
+.explorer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.folder-tile {
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.folder-tile:hover {
+  transform: translateY(-4px);
+  border-color: #22c55e;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Folder Visual Simulation */
+.folder-visual {
+  position: relative;
+  width: 64px;
+  height: 52px;
+  margin-bottom: 1rem;
+}
+
+.folder-tab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 12px;
+  background: #e2a03f;
+  border-radius: 4px 4px 0 0;
+}
+
+.folder-front {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 64px;
+  height: 44px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(217, 119, 6, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.folder-tile:hover .folder-front {
+  transform: skewX(-4deg) scale(1.03);
+}
+
+.folder-emoji {
+  font-size: 1.4rem;
+}
+
+.folder-info {
+  flex: 1;
+}
+
+.folder-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.folder-badge {
+  display: inline-block;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: 0.6rem;
+}
+
+.folder-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.folder-action-hint {
+  margin-top: 1.15rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Inside Opened Folder View */
+.opened-folder-banner {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.btn-back-crumb {
+  background: #f1f5f9;
+  border: 1px solid var(--border-color);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back-crumb:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.opened-folder-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.files-count-badge {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.files-list-view {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.file-item-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-item-row:hover {
+  border-color: var(--primary);
+  background: #f8fafc;
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.file-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.file-details {
+  flex: 1;
+}
+
+.file-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.file-meta {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.btn-open-file {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border: 1px solid #bbf7d0;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-open-file:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* 3. CLIMATE & WEATHER MATCHING SECTION */
+.weather-layout {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 1.75rem;
+}
+
+@media (max-width: 1024px) {
+  .weather-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.weather-station-card {
+  background: linear-gradient(145deg, #1e3a8a 0%, #1e40af 50%, #0369a1 100%);
+  color: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.weather-search-box {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.weather-search-input {
+  flex: 1;
+  padding: 0.65rem 0.95rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.weather-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-weather-search {
+  background: #ffffff;
+  color: #1e3a8a;
+  border: none;
+  padding: 0 1rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quick-locations-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.quick-loc-pill {
+  font-size: 0.74rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 9px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.quick-loc-pill:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.weather-main-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+.temp-large {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.temp-large span {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.weather-icon-large {
+  font-size: 4rem;
+}
+
+.weather-condition-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e0f2fe;
+}
+
+.weather-location-label {
+  font-size: 0.9rem;
+  color: #bae6fd;
+}
+
+.weather-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 0.76rem;
+  color: #bae6fd;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* Land & Soil Filter Controls */
+.soil-filter-card {
+  background: #ffffff;
+  color: var(--text-main);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.soil-filter-card h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+}
+
+.soil-select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-color);
+  font-size: 0.88rem;
+  color: var(--text-main);
+  background: #f8fafc;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Crop Recommendations List */
+.recommendations-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+}
+
+.recommendations-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.recommendations-header h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.recommendations-header p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+}
+
+.ranked-crops-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.crop-rec-card {
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.crop-rec-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #22c55e;
+}
+
+.rec-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.rec-crop-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rec-crop-icon {
+  font-size: 2rem;
+}
+
+.rec-crop-identity h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.rec-crop-identity span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.rec-score-box {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.score-badge {
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+}
+
+.score-badge.status-excellent { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.score-badge.status-good { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+.score-badge.status-warning { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.score-badge.status-poor { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+
+.status-badge-text {
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.rec-reason-text {
+  font-size: 0.9rem;
+  color: #334155;
+  background: #f8fafc;
+  padding: 0.85rem 1.1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.85rem;
+  border-left: 3px solid #22c55e;
+  line-height: 1.5;
+}
+
+.rec-metrics-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.rec-metrics-breakdown strong {
+  color: var(--text-main);
+}
+
+.btn-view-rec-dossier {
+  margin-top: 0.75rem;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.btn-view-rec-dossier:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* 4. MODAL DIALOG FOR FILE / CROP DOSSIERS */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  background: #ffffff;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalScale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  padding: 1.25rem 1.75rem;
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-close-modal {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-close-modal:hover {
+  color: var(--text-main);
+}
+
+.modal-content-area {
+  padding: 1.75rem;
+  overflow-y: auto;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.markdown-rendered-view {
+  font-family: inherit;
+  color: #1e293b;
+}
+
+.markdown-rendered-view h1 { font-size: 1.45rem; margin-bottom: 0.85rem; color: #14532d; }
+.markdown-rendered-view h2 { font-size: 1.2rem; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #166534; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
+.markdown-rendered-view h3 { font-size: 1.05rem; margin-top: 1rem; margin-bottom: 0.4rem; }
+.markdown-rendered-view p { margin-bottom: 0.85rem; }
+.markdown-rendered-view ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+.markdown-rendered-view li { margin-bottom: 0.35rem; }
+.markdown-rendered-view table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+.markdown-rendered-view th, .markdown-rendered-view td { border: 1px solid #cbd5e1; padding: 8px 12px; text-align: left; }
+.markdown-rendered-view th { background: #f1f5f9; font-weight: 600; }
+
+.modal-footer {
+  padding: 1rem 1.75rem;
+  background: #f8fafc;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.btn-modal-action {
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+/* Utilities */
+.btn-sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.btn-outline {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+.btn-outline:hover {
+  background: #f1f5f9;
+}
+
+
+/* Enhanced Mobile Optimization for GitHub Pages */
+@media (max-width: 768px) {
+  .app-navbar {
+    padding: 0.75rem 1rem;
+  }
+  .navbar-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .brand-wrapper {
+    justify-content: center;
+  }
+  .brand-title {
+    font-size: 1.25rem;
+  }
+  .nav-tabs {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    padding: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+  .main-wrapper {
+    padding: 0.5rem 0.75rem 2rem 0.75rem;
+  }
+  .quick-status-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .advisory-layout, .weather-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .chat-card {
+    height: 580px;
+  }
+  .msg-bubble {
+    max-width: 95%;
+  }
+  .explorer-grid {
+    grid-template-columns: 1fr;
+  }
+  .weather-station-card {
+    padding: 1.25rem;
+  }
+  .temp-large {
+    font-size: 2.8rem;
+  }
+  .weather-icon-large {
+    font-size: 3rem;
+  }
+}
+</style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
 </head>
 <body>
@@ -385,11 +1737,2128 @@
   </div>
 
   <!-- Scripts -->
-  <script src="js/crops_data.js"></script>
-  <script src="js/advisory_engine.js"></script>
-  <script src="js/weather_service.js"></script>
-  <script src="js/folder_explorer.js"></script>
-  <script src="js/app.js"></script>
+  <!-- Embedded Self-Contained AgriCrops Intelligence Modules -->
+<script>
+// 1. CROPS DATA & VAULT DIRECTORIES
+/**
+ * AgriCrops Knowledge Base & Crop Repository
+ * Comprehensive Agricultural Dataset with Growth, Fertilization, Soil, Balancing, and Climate Data
+ */
+
+const CROPS_DATABASE = [
+  {
+    id: "rice",
+    name: "Rice (Paddy)",
+    scientific_name: "Oryza sativa",
+    category: "Cereals & Grains",
+    folder: "Cereals_and_Grains",
+    icon: "🌾",
+    summary: "A staple cereal grain requiring flooded conditions or consistent high moisture, thriving in clayey and alluvial soils.",
+    climate_requirements: {
+      seasons: ["Kharif", "Summer / Boro"],
+      min_temp: 20,
+      max_temp: 38,
+      optimal_temp: 25,
+      min_rain: 100, // mm per month or total 1000-1500mm
+      max_rain: 350,
+      humidity_range: "60% - 85%",
+      sunlight_hours: "6 - 8 hours daily"
+    },
+    land_soil_suitability: {
+      soil_types: ["Clayey Loam", "Alluvial", "Silty Clay"],
+      ideal_ph: "5.5 - 6.8",
+      drainage: "Low to moderate drainage (able to hold standing water during early stages)",
+      land_prep: "Deep plowing followed by puddling (churning wet soil) 2-3 times to create an impermeable layer.",
+      altitude: "0 - 1800m above sea level"
+    },
+    how_to_grow: {
+      sowing_time: "June-July (Kharif) or Nov-Feb (Rabi/Boro depending on region)",
+      seed_rate: "20-25 kg/hectare for transplanted paddy; 40-50 kg/ha for direct seeding",
+      spacing: "20 cm x 15 cm between hills",
+      nursery_prep: "Raise seedlings in wet or dry bed nursery for 21-25 days before transplanting 2-3 seedlings per hill.",
+      irrigation_stages: "Maintain 2-5 cm standing water from transplanting till dough stage; drain 10 days before harvest.",
+      growth_cycle_days: "110 - 150 days",
+      harvesting_signs: "80-85% of panicles turn golden yellow and grains feel hard when pressed with teeth."
+    },
+    fertilization: {
+      npk_ratio: "120:60:40 kg/ha (N:P2O5:K2O)",
+      basal_dose: "Apply 100% of Phosphorus, 50% of Potassium, and 25% of Nitrogen at final puddling.",
+      top_dressing: "Split remaining Nitrogen: 50% at active tillering (3 weeks) and 25% at panicle initiation (6-7 weeks). Apply remaining 50% Potassium at panicle stage.",
+      organic_options: "Incorporate 10-12 tonnes/ha Farm Yard Manure (FYM) or green manure (Dhaincha/Sesbania) 2 weeks before transplanting.",
+      micronutrients: "Apply Zinc Sulphate (25 kg/ha) at transplanting to prevent Khaira disease."
+    },
+    crop_balancing: {
+      soil_amendments: "If soil pH is below 5.5, apply agricultural lime (1.5-2 t/ha). If alkaline (>8.0), apply gypsum and sulfur.",
+      nutrient_deficiency_cures: "Zinc deficiency causes rusty brown spots; spray 0.5% ZnSO4 + 0.25% lime. Nitrogen deficiency (yellowing lower leaves); top dress urea immediately.",
+      pest_disease_management: "Monitor for Brown Plant Hopper (BPH), Stem Borer, and Blast. Use Neem oil (3ml/L) or Trichoderma viride. Avoid excessive nitrogen which worsens blast.",
+      companion_plants: ["Azolla (water fern for bio-nitrogen)", "Duckweed", "Sesbania (border)"],
+      crop_rotation: "Rotate with Pulses (Chickpea, Lentil, Green Gram) or Mustard to restore soil nitrogen and disrupt weed cycles."
+    },
+    expected_yield: "4.5 - 6.5 metric tonnes / hectare"
+  },
+  {
+    id: "wheat",
+    name: "Wheat",
+    scientific_name: "Triticum aestivum",
+    category: "Cereals & Grains",
+    folder: "Cereals_and_Grains",
+    icon: "🌾",
+    summary: "Cool-season staple cereal grain that produces high yields in well-drained fertile loamy soils with moderate moisture.",
+    climate_requirements: {
+      seasons: ["Rabi (Winter)"],
+      min_temp: 10,
+      max_temp: 28,
+      optimal_temp: 18,
+      min_rain: 25,
+      max_rain: 100,
+      humidity_range: "40% - 65%",
+      sunlight_hours: "7 - 9 hours of clear sunshine"
+    },
+    land_soil_suitability: {
+      soil_types: ["Well-drained Loam", "Clay Loam", "Alluvial Loam"],
+      ideal_ph: "6.0 - 7.5",
+      drainage: "Excellent internal drainage; highly sensitive to waterlogging.",
+      land_prep: "Plow twice with disc harrow, followed by cultivator and leveling plank to achieve a fine crumbly seedbed.",
+      altitude: "0 - 3000m above sea level"
+    },
+    how_to_grow: {
+      sowing_time: "First fortnight of November (ideal for timely sown varieties)",
+      seed_rate: "100 kg/ha for normal sowing; 125 kg/ha for late sowing",
+      spacing: "20-22.5 cm row-to-row spacing, 4-5 cm seed depth",
+      nursery_prep: "Direct seeded using seed-cum-fertilizer drill into moist soil.",
+      irrigation_stages: "Crucial stages: Crown Root Initiation (CRI at 21 days), Tillering (40-45 d), Late Jointing (60-65 d), Flowering (80-85 d), Milking (100-105 d), Dough stage (115-120 d).",
+      growth_cycle_days: "120 - 145 days",
+      harvesting_signs: "Leaves and spikes turn yellow-brown, straw becomes dry and brittle, grain moisture drops below 14%."
+    },
+    fertilization: {
+      npk_ratio: "120:60:40 kg/ha (N:P2O5:K2O) for irrigated; 60:30:20 for rainfed",
+      basal_dose: "Half Nitrogen + full Phosphorus + full Potassium applied below seeds at sowing.",
+      top_dressing: "First top dress: 25% Nitrogen at first irrigation (CRI stage); second 25% at second irrigation (Tillering stage).",
+      organic_options: "Apply 10 tonnes well-rotted compost per hectare during first land preparation.",
+      micronutrients: "Foliar spray of 0.5% Zinc sulphate at 30 and 45 days if deficiency symptoms appear."
+    },
+    crop_balancing: {
+      soil_amendments: "Correct salinity with gypsum if EC > 4 dS/m. Ensure soil organic carbon is above 0.5%.",
+      nutrient_deficiency_cures: "Sulfur deficiency causes yellowing of young leaves; apply Gypsum (200 kg/ha).",
+      pest_disease_management: "Watch for Yellow/Brown Rust and Termites. Seed treatment with Carbendazim (2g/kg seed). For rust, spray Propiconazole 25 EC (0.1%).",
+      companion_plants: ["Mustard (intercropped at 9:1 ratio)", "Chickpea"],
+      crop_rotation: "Paddy-Wheat, Maize-Wheat, Cotton-Wheat, or Green Gram-Wheat systems."
+    },
+    expected_yield: "4.0 - 5.5 metric tonnes / hectare"
+  },
+  {
+    id: "maize",
+    name: "Maize (Corn)",
+    scientific_name: "Zea mays",
+    category: "Cereals & Grains",
+    folder: "Cereals_and_Grains",
+    icon: "🌽",
+    summary: "Queen of cereals with immense yield potential, cultivated across tropical and temperate zones in fertile, aerated soils.",
+    climate_requirements: {
+      seasons: ["Kharif", "Rabi", "Spring"],
+      min_temp: 18,
+      max_temp: 35,
+      optimal_temp: 24,
+      min_rain: 50,
+      max_rain: 180,
+      humidity_range: "50% - 75%",
+      sunlight_hours: "8 - 10 hours daily"
+    },
+    land_soil_suitability: {
+      soil_types: ["Deep Fertile Loam", "Sandy Loam", "Silt Loam"],
+      ideal_ph: "5.8 - 7.2",
+      drainage: "Good drainage is essential; maize cannot tolerate water stagnation for more than 12 hours.",
+      land_prep: "Deep plowing (20-25 cm) followed by 2-3 harrowings and ridge & furrow formation.",
+      altitude: "Sea level up to 2500m"
+    },
+    how_to_grow: {
+      sowing_time: "Kharif: June-July; Rabi: October-November; Spring: February",
+      seed_rate: "18-20 kg/ha for grain maize; 25 kg/ha for sweet corn/baby corn",
+      spacing: "60 cm between rows x 20 cm between plants",
+      nursery_prep: "Direct seeding into furrows or on ridges at 4-5 cm depth.",
+      irrigation_stages: "Knee-high stage (30-35 days), Tasseling (50-55 days), Silking (65-70 days), and Grain Filling (80-85 days).",
+      growth_cycle_days: "90 - 120 days",
+      harvesting_signs: "Husk leaves dry up, turn papery white, and a black abscission layer forms at the grain tip."
+    },
+    fertilization: {
+      npk_ratio: "150:75:40 kg/ha (N:P2O5:K2O) for hybrid maize",
+      basal_dose: "1/3rd Nitrogen, all Phosphorus, and all Potassium at sowing.",
+      top_dressing: "1/3rd Nitrogen at knee-high stage (30 DAS) and 1/3rd Nitrogen at tasseling/silking stage.",
+      organic_options: "Vermicompost at 2.5 t/ha or FYM at 12 t/ha incorporated during field preparation.",
+      micronutrients: "Zinc Sulphate (25 kg/ha) is critical; maize is an indicator crop for zinc deficiency."
+    },
+    crop_balancing: {
+      soil_amendments: "Apply biofertilizers like Azospirillum and Phosphobacteria as seed treatment (600g/ha).",
+      nutrient_deficiency_cures: "Purpling of leaf margins indicates Phosphorus deficiency (apply DAP/Rock phosphate).",
+      pest_disease_management: "Fall Armyworm (FAW) is a major pest. Apply Emamectin Benzoate 5 SG or Bacillus thuringiensis (Bt). Use pheromone traps.",
+      companion_plants: ["Beans / Cowpea (Three Sisters method)", "Squash / Pumpkin"],
+      crop_rotation: "Maize - Chickpea, Maize - Mustard, Maize - Potato - Green Gram."
+    },
+    expected_yield: "6.0 - 8.5 metric tonnes / hectare (hybrids)"
+  },
+  {
+    id: "tomato",
+    name: "Tomato",
+    scientific_name: "Solanum lycopersicum",
+    category: "Vegetables & Greens",
+    folder: "Vegetables_and_Greens",
+    icon: "🍅",
+    summary: "Popular high-value vegetable crop demanding rich organic matter, warm days, cool nights, and strict moisture control.",
+    climate_requirements: {
+      seasons: ["Warm season / Mild winter", "Spring", "Autumn"],
+      min_temp: 15,
+      max_temp: 32,
+      optimal_temp: 21,
+      min_rain: 40,
+      max_rain: 120,
+      humidity_range: "50% - 70%",
+      sunlight_hours: "7 - 8 hours of direct sun"
+    },
+    land_soil_suitability: {
+      soil_types: ["Sandy Loam rich in humus", "Red Loam", "Black Soil with good aeration"],
+      ideal_ph: "6.0 - 7.0",
+      drainage: "High drainage; roots suffocate quickly in stagnant water and succumb to damping off.",
+      land_prep: "Fine tilth preparation, incorporate compost, make raised beds 15 cm high and 1m wide with drip irrigation.",
+      altitude: "0 - 1500m"
+    },
+    how_to_grow: {
+      sowing_time: "Autumn crop: June-August; Spring crop: Nov-Dec; Hill crop: March-April",
+      seed_rate: "100-150 g/ha for hybrids; 400-500 g/ha for open-pollinated",
+      spacing: "60 cm x 45 cm for determinate; 90 cm x 60 cm for indeterminate varieties",
+      nursery_prep: "Sow in seedling trays with coco peat, vermiculite, and perlite. Transplant after 25-30 days when 4-5 true leaves appear.",
+      irrigation_stages: "Regular uniform watering. Avoid fluctuating moisture to prevent Blossom End Rot and fruit cracking.",
+      growth_cycle_days: "90 - 130 days",
+      harvesting_signs: "Harvest at breaker stage (pink blush at blossom end) for distance marketing, or fully ripe for local use."
+    },
+    fertilization: {
+      npk_ratio: "180:100:150 kg/ha (N:P2O5:K2O)",
+      basal_dose: "50% Nitrogen, 100% Phosphorus, 50% Potassium applied into raised beds.",
+      top_dressing: "Apply remaining N and K in 4 equal splits at 15-day intervals through fertigation or manual hoeing.",
+      organic_options: "Neem cake (250 kg/ha) + Vermicompost (3 t/ha) + Trichoderma viride.",
+      micronutrients: "Calcium and Boron are vital. Spray 0.2% Calcium Nitrate and 0.1% Borax during flowering to stop flower drop."
+    },
+    crop_balancing: {
+      soil_amendments: "Maintain soil organic matter above 1.5%. Mulch with silver-black plastic or dry straw to conserve moisture and suppress weeds.",
+      nutrient_deficiency_cures: "Blossom End Rot (black sunken patch on fruit bottom) is caused by Calcium deficiency and erratic watering; foliar spray CaCl2 (0.5%).",
+      pest_disease_management: "Early Blight, Late Blight, Whitefly (curls leaves), and Fruit Borer. Use yellow sticky traps, spray Neem oil, and prune lower diseased foliage.",
+      companion_plants: ["Marigold (repels root-knot nematodes)", "Basil (enhances flavor & repels flies)", "Garlic"],
+      crop_rotation: "Never plant after other solanaceous crops (Potato, Brinjal, Chilli); rotate with Legumes, Sweet corn, or Cabbage."
+    },
+    expected_yield: "50 - 80 metric tonnes / hectare (hybrids)"
+  },
+  {
+    id: "cotton",
+    name: "Cotton",
+    scientific_name: "Gossypium hirsutum",
+    category: "Cash Crops & Fibers",
+    folder: "Cash_Crops_and_Fibers",
+    icon: "🧶",
+    summary: "White Gold cash crop requiring warm climates, deep moisture-retentive black soils, and sunny, dry harvesting periods.",
+    climate_requirements: {
+      seasons: ["Kharif (Summer/Monsoon)"],
+      min_temp: 21,
+      max_temp: 40,
+      optimal_temp: 28,
+      min_rain: 50,
+      max_rain: 120,
+      humidity_range: "50% - 65%",
+      sunlight_hours: "8 - 10 hours of bright sunlight; frost-free minimum 200 days"
+    },
+    land_soil_suitability: {
+      soil_types: ["Deep Black Cotton Soil (Vertisols)", "Alluvial Loam with moisture retention"],
+      ideal_ph: "6.5 - 8.2",
+      drainage: "Good surface and internal drainage; resists drought but hates water stagnation.",
+      land_prep: "Deep summer plowing (30 cm) with mould-board plow to destroy weed rhizomes and bollworm pupae.",
+      altitude: "Sea level to 1000m"
+    },
+    how_to_grow: {
+      sowing_time: "April-May (North India) or June-July (Central/South India with monsoon onset)",
+      seed_rate: "2.5-3.0 kg/ha for Bt Hybrids; 10-12 kg/ha for non-Bt varieties",
+      spacing: "90 cm x 60 cm or 120 cm x 45 cm for Bt hybrids",
+      nursery_prep: "Direct dibbling of delinted and treated seeds at 3-5 cm depth into moist soil.",
+      irrigation_stages: "Square formation (35-40 d), Flowering (60-70 d), and Boll development (80-110 d). Critical to stop watering when bolls burst.",
+      growth_cycle_days: "150 - 180 days",
+      harvesting_signs: "Bolls burst open completely, exposing fluffy white lint. Pick in morning hours when dew dries."
+    },
+    fertilization: {
+      npk_ratio: "120:60:60 kg/ha (N:P2O5:K2O) for Bt cotton",
+      basal_dose: "20% N, full P, and 50% K at time of sowing.",
+      top_dressing: "Split remaining N: 40% at squaring and 40% at flowering along with remaining 50% K.",
+      organic_options: "10 t/ha Farmyard manure + 500 kg castor cake or neem cake.",
+      micronutrients: "Foliar spray of 1% Magnesium Sulphate + 0.5% Urea at 50 and 70 days to prevent leaf reddening."
+    },
+    crop_balancing: {
+      soil_amendments: "High potassium balance prevents premature defoliation. In sodic soils, treat with gypsum.",
+      nutrient_deficiency_cures: "Leaf reddening (Magnesium/Nitrogen imbalance) cured by 1% MgSO4 spray. Boron deficiency causes boll shedding (spray 0.1% Borax).",
+      pest_disease_management: "Sucking pests (Aphids, Jassids, Thrips, Whiteflies) and Pink Bollworm. Install pheromone traps (5/acre). Conserve predatory ladybugs and lacewings.",
+      companion_plants: ["Cowpea (trap crop)", "Marigold (border)", "Castor (attracts Spodoptera)"],
+      crop_rotation: "Cotton - Wheat, Cotton - Chickpea, or Cotton - Fallow."
+    },
+    expected_yield: "2.5 - 3.5 metric tonnes seed cotton / hectare"
+  },
+  {
+    id: "chickpea",
+    name: "Chickpea (Gram)",
+    scientific_name: "Cicer arietinum",
+    category: "Pulses & Legumes",
+    folder: "Pulses_and_Legumes",
+    icon: "🧆",
+    summary: "Premier legume and protein powerhouse that fixes atmospheric nitrogen, perfect for low-moisture winter cultivation.",
+    climate_requirements: {
+      seasons: ["Rabi (Winter)"],
+      min_temp: 10,
+      max_temp: 30,
+      optimal_temp: 20,
+      min_rain: 20,
+      max_rain: 60,
+      humidity_range: "30% - 50%",
+      sunlight_hours: "7 - 8 hours daily"
+    },
+    land_soil_suitability: {
+      soil_types: ["Clay Loam", "Sandy Loam with good subsoil moisture", "Medium Black Soil"],
+      ideal_ph: "6.0 - 7.5",
+      drainage: "Very sensitive to poor aeration and excess moisture; requires loose, friable seedbed.",
+      land_prep: "Rough seedbed is preferred over fine powder to avoid crusting after light winter showers.",
+      altitude: "0 - 2000m"
+    },
+    how_to_grow: {
+      sowing_time: "Mid-October to first week of November",
+      seed_rate: "60-75 kg/ha for Desi types; 80-100 kg/ha for Kabuli types",
+      spacing: "30 cm row-to-row x 10 cm plant-to-plant; depth 7-10 cm to access residual moisture",
+      nursery_prep: "Direct seeded. Inoculate seeds with Rhizobium culture and PSB (Phosphorus Solubilizing Bacteria).",
+      irrigation_stages: "Pre-sowing irrigation, then only 1 or 2 light irrigations at pre-flowering (45 days) and pod development (70 days). Never irrigate during peak blooming.",
+      growth_cycle_days: "100 - 130 days",
+      harvesting_signs: "Plants turn yellowish-brown, leaves drop off, and pods produce a rattling sound when shaken."
+    },
+    fertilization: {
+      npk_ratio: "20:40:20 kg/ha (N:P2O5:K2O) + 20 kg Sulfur/ha",
+      basal_dose: "All fertilizers applied basal at sowing 4-5 cm below the seed line.",
+      top_dressing: "Top dressing of Nitrogen is NOT needed as nodules fix N. Foliar spray of 2% Urea at pod fill boosts protein.",
+      organic_options: "Vermicompost at 2 t/ha; Rhizobium leguminosarum bio-inoculant.",
+      micronutrients: "Molybdenum and Iron are crucial for nitrogenase enzymes. Spray 0.05% Sodium molybdate if soil is deficient."
+    },
+    crop_balancing: {
+      soil_amendments: "Sulfur application (20 kg/ha through gypsum) increases nodulation and protein yield by 20%.",
+      nutrient_deficiency_cures: "Iron chlorosis on calcareous soils: spray 0.5% FeSO4.",
+      pest_disease_management: "Helicoverpa pod borer and Fusarium wilt. Install 'T'-shaped bird perches (50/ha) and spray NPV (Nuclear Polyhedrosis Virus) or neem seed kernel extract (NSKE 5%).",
+      companion_plants: ["Mustard (intercrop 4:1)", "Linseed", "Coriander"],
+      crop_rotation: "Paddy - Chickpea, Maize - Chickpea, Pearlmillet - Chickpea."
+    },
+    expected_yield: "1.8 - 2.8 metric tonnes / hectare"
+  },
+  {
+    id: "potato",
+    name: "Potato",
+    scientific_name: "Solanum tuberosum",
+    category: "Vegetables & Greens",
+    folder: "Vegetables_and_Greens",
+    icon: "🥔",
+    summary: "Heavy yielding tuber crop thriving in cool conditions, requiring loose, aerated soils rich in potassium.",
+    climate_requirements: {
+      seasons: ["Rabi (Winter) / Hill Summer"],
+      min_temp: 12,
+      max_temp: 25,
+      optimal_temp: 18,
+      min_rain: 30,
+      max_rain: 90,
+      humidity_range: "60% - 80%",
+      sunlight_hours: "6 - 7 hours daily (short days favor tuberization)"
+    },
+    land_soil_suitability: {
+      soil_types: ["Loose Sandy Loam", "Silt Loam rich in organic matter"],
+      ideal_ph: "5.2 - 6.5 (slightly acidic prevents potato scab)",
+      drainage: "Exceptional drainage is compulsory; tubers rot rapidly in waterlogged soils.",
+      land_prep: "Deep cultivation (25-30 cm) to eliminate hardpans, followed by earthing up ridges.",
+      altitude: "Plains in winter, Hills at 1500-2500m in summer"
+    },
+    how_to_grow: {
+      sowing_time: "Mid-October to early November in plains; March-April in hills",
+      seed_rate: "2.5 - 3.0 metric tonnes/ha of healthy, disease-free sprouted seed tubers (35-50g each)",
+      spacing: "60 cm ridge-to-ridge x 20 cm tuber-to-tuber",
+      nursery_prep: "Pre-sprout tubers in diffused light for 10-15 days until sturdy green sprouts form.",
+      irrigation_stages: "Keep soil consistently moist (70% field capacity). Critical at stolon formation (20 d), tuber initiation (40 d), and tuber bulking (60 d). Stop water 10 days before dehaulming.",
+      growth_cycle_days: "90 - 110 days",
+      harvesting_signs: "Foliage turns yellow and senesces. Dehaulm (cut vines) 10-12 days before harvest to harden the tuber skin."
+    },
+    fertilization: {
+      npk_ratio: "150:80:120 kg/ha (N:P2O5:K2O)",
+      basal_dose: "50% Nitrogen, 100% Phosphorus, and 50% Potassium applied at planting in furrows.",
+      top_dressing: "Remaining 50% N and 50% K applied at first earthing-up (30-35 days after planting).",
+      organic_options: "Well-decomposed cattle manure (25-30 t/ha) applied 3 weeks prior.",
+      micronutrients: "Zinc and Magnesium. Potassium deficiency causes blackening of boiled potatoes."
+    },
+    crop_balancing: {
+      soil_amendments: "Maintain acidic pH (5.2-6.0) to suppress Streptomyces scabies. Avoid liming immediately before potato.",
+      nutrient_deficiency_cures: "Potassium promotes starch translocation; use Muriate of Potash (MOP) or Sulfate of Potash (SOP).",
+      pest_disease_management: "Late Blight (Phytophthora infestans) is the deadliest threat. Prophylactic spray of Mancozeb (0.2%) before foggy weather.",
+      companion_plants: ["Horseradish", "Bush Beans", "Marigold"],
+      crop_rotation: "Rotate with Maize, Legumes, or Mustard. Never follow Tomato or Pepper."
+    },
+    expected_yield: "25 - 40 metric tonnes / hectare"
+  },
+  {
+    id: "sugarcane",
+    name: "Sugarcane",
+    scientific_name: "Saccharum officinarum",
+    category: "Cash Crops & Fibers",
+    folder: "Cash_Crops_and_Fibers",
+    icon: "🎋",
+    summary: "High-biomass perennial grass and sweetener source requiring long sunshine hours, copious water, and deep fertile loam.",
+    climate_requirements: {
+      seasons: ["Spring / Autumn Planting (Year-round)"],
+      min_temp: 20,
+      max_temp: 38,
+      optimal_temp: 27,
+      min_rain: 100,
+      max_rain: 250,
+      humidity_range: "70% - 85%",
+      sunlight_hours: "8 - 10 hours daily"
+    },
+    land_soil_suitability: {
+      soil_types: ["Deep Fertile Loam", "Clayey Loam", "Alluvial Deep Soils"],
+      ideal_ph: "6.5 - 7.8",
+      drainage: "Good drainage; high water table (>1m) and waterlogging reduce sucrose content.",
+      land_prep: "Deep subsoiling followed by 2 cross-plowings, ridging at 90-120 cm width.",
+      altitude: "0 - 1000m"
+    },
+    how_to_grow: {
+      sowing_time: "Spring (Feb-March) or Autumn (Oct-Nov)",
+      seed_rate: "35,000 - 40,000 three-budded setts / hectare (approx. 7-8 tonnes setts)",
+      spacing: "90 cm to 120 cm row-to-row spacing",
+      nursery_prep: "Treat setts with Carbendazim (1g/L) and hot water (52°C for 30 mins) to kill red-rot spores.",
+      irrigation_stages: "Germination (1-45 d, 4 irrigations), Formative (45-120 d, every 8-10 days), Grand growth (120-270 d, every 12-15 days), Maturation (withhold 1 month prior to harvest).",
+      growth_cycle_days: "300 - 365 days (10 - 12 months)",
+      harvesting_signs: "Brix hydrometer reading reaches 18-20%, leaves dry up, stalk makes metallic ringing sound when tapped."
+    },
+    fertilization: {
+      npk_ratio: "250:100:120 kg/ha (N:P2O5:K2O)",
+      basal_dose: "Apply 25% Nitrogen, all Phosphorus, and 50% Potassium in furrows during planting.",
+      top_dressing: "Apply 50% N at tillering (60 days) and 25% N + 50% K at earthing up (120-150 days). Stop N by 5th month.",
+      organic_options: "Pressmud (sugar mill waste) at 10-15 t/ha or FYM at 25 t/ha + Trash mulching.",
+      micronutrients: "Iron and Zinc deficiency is common in alkaline soils; spray 1% Ferrous Sulphate + 0.5% ZnSO4."
+    },
+    crop_balancing: {
+      soil_amendments: "Soil trash mulching (10 cm thick) conserves 30% water, suppresses weeds, and recycles organic carbon.",
+      nutrient_deficiency_cures: "Excess late nitrogen creates watery juice with poor recovery; strictly complete N application before grand growth.",
+      pest_disease_management: "Early shoot borer, Top borer, and Red rot. Release Trichogramma egg parasitoids (50,000/ha). Use resistant cultivars.",
+      companion_plants: ["Potato, Green gram, or Soybean intercropped in wide row spacing"],
+      crop_rotation: "Sugarcane (Plant crop) - Sugarcane (Ratoon) - Wheat / Rice - Green Manure."
+    },
+    expected_yield: "80 - 120 metric tonnes cane / hectare"
+  },
+  {
+    id: "mango",
+    name: "Mango",
+    scientific_name: "Mangifera indica",
+    category: "Fruits & Orchards",
+    folder: "Fruits_and_Orchards",
+    icon: "🥭",
+    summary: "King of fruits requiring distinct dry seasons for flower bud triggering, deep soils, and warm tropical sunshine.",
+    climate_requirements: {
+      seasons: ["Perennial Orchard"],
+      min_temp: 18,
+      max_temp: 42,
+      optimal_temp: 27,
+      min_rain: 50,
+      max_rain: 200,
+      humidity_range: "50% - 75%",
+      sunlight_hours: "9 - 10 hours daily"
+    },
+    land_soil_suitability: {
+      soil_types: ["Deep alluvial loam", "Red loamy soils with gravelly substratum"],
+      ideal_ph: "5.5 - 7.5",
+      drainage: "Requires at least 2 to 2.5 meters depth of well-drained soil without impenetrable hard pans.",
+      land_prep: "Dig pits of 1m x 1m x 1m during summer; expose to sun, then fill with 50kg compost + 1kg SSP + topsoil.",
+      altitude: "0 - 900m"
+    },
+    how_to_grow: {
+      sowing_time: "Monsoon onset (July-August) or spring (Feb-March under irrigation)",
+      seed_rate: "100 plants/ha for traditional (10m x 10m); 400-500 plants/ha for High Density (5m x 5m)",
+      spacing: "10m x 10m (Standard) or 5m x 5m (High Density Orchard)",
+      nursery_prep: "Propagated by veneer grafting, epicotyl grafting, or inarching on sturdy local rootstocks.",
+      irrigation_stages: "Regular watering during early establishment; withhold water 2 months before flowering to induce flower buds; resume watering after fruit set until maturity.",
+      growth_cycle_days: "Perennial (First commercial bearing at 4-5 years; fruit develops in 100-120 days from bloom)",
+      harvesting_signs: "Fruit shoulders rise above the stem attachment, skin color lightens from dark olive to light yellowish green, specific gravity 1.01-1.02."
+    },
+    fertilization: {
+      npk_ratio: "For bearing tree (10+ yrs): 1000g N, 500g P2O5, 1000g K2O per tree per year",
+      basal_dose: "Apply 50% N, full P, and 50% K immediately after monsoon or harvest along with 50kg farmyard manure.",
+      top_dressing: "Apply remaining 50% N and 50% K during fruit development stage (February-March).",
+      organic_options: "Castor cake (5 kg/tree), vermicompost (20 kg/tree), VAM fungi.",
+      micronutrients: "Spray Borax (0.2%) to prevent internal fruit necrosis; Zinc sulphate (0.5%) for little-leaf disorder."
+    },
+    crop_balancing: {
+      soil_amendments: "Maintain basin mulching with dry leaves or sugarcane trash (15 cm thick) to preserve root zone moisture.",
+      nutrient_deficiency_cures: "Paclobutrazol application (3-5 ml/meter tree canopy) balances vegetative vigor and stimulates uniform off-season or regular flowering.",
+      pest_disease_management: "Mango Hopper, Fruit Fly, and Powdery Mildew. Spray Wettable Sulfur (0.2%) for mildew; install Methyl Eugenol pheromone traps for fruit fly.",
+      companion_plants: ["Cowpea, Papaya, Turmeric, or Ginger grown as intercrops in young orchards"],
+      crop_rotation: "Not applicable (Perennial orchard lasting 40-60 years)."
+    },
+    expected_yield: "10 - 18 metric tonnes / hectare for mature orchard"
+  },
+  {
+    id: "turmeric",
+    name: "Turmeric",
+    scientific_name: "Curcuma longa",
+    category: "Spices & Plantation",
+    folder: "Spices_and_Plantation",
+    icon: "🫚",
+    summary: "Golden spice and medicinal rhizome demanding warm humid tropical weather, high organic matter, and shade tolerance.",
+    climate_requirements: {
+      seasons: ["Kharif (Monsoon crop)"],
+      min_temp: 20,
+      max_temp: 35,
+      optimal_temp: 26,
+      min_rain: 120,
+      max_rain: 300,
+      humidity_range: "70% - 90%",
+      sunlight_hours: "Partial shade to open sunlight (benefits from 20-30% shade)"
+    },
+    land_soil_suitability: {
+      soil_types: ["Well-drained Sandy Loam", "Clay Loam rich in humus", "Red Alluvial Soil"],
+      ideal_ph: "5.5 - 7.0",
+      drainage: "Zero tolerance for stagnant water; raised beds or ridges are essential to stop rhizome rot.",
+      land_prep: "Deep plowing (30 cm), prepare raised beds 15 cm high, 1.2 m wide, with 50 cm spacing between beds.",
+      altitude: "0 - 1500m"
+    },
+    how_to_grow: {
+      sowing_time: "April to June with pre-monsoon showers",
+      seed_rate: "2000 - 2500 kg/ha of mother or primary finger rhizomes (25-35g with 2 healthy buds)",
+      spacing: "30 cm x 20 cm or 25 cm x 25 cm on raised beds",
+      nursery_prep: "Treat seed rhizomes with Mancozeb (3g/L) for 30 minutes and shade dry before planting at 5 cm depth.",
+      irrigation_stages: "Water immediately after planting, then at 7-10 day intervals depending on rainfall. Vital during rhizome enlargement (90-150 days).",
+      growth_cycle_days: "210 - 270 days (7 - 9 months)",
+      harvesting_signs: "Leaves turn yellow and dry up completely, collapsing onto the ground."
+    },
+    fertilization: {
+      npk_ratio: "120:60:120 kg/ha (N:P2O5:K2O)",
+      basal_dose: "All Phosphorus + 25% Nitrogen + 25% Potassium in bed preparation.",
+      top_dressing: "Split remaining N and K in 3 equal parts at 30, 60, and 90 days after planting coinciding with earthing up.",
+      organic_options: "Incorporate 25-30 tonnes/ha Farm Yard Manure + 2 tonnes neem cake + heavy green leaf mulching (15 tonnes/ha).",
+      micronutrients: "Spray 0.5% Ferrous Sulphate and 0.5% Zinc Sulphate at 60 and 90 days."
+    },
+    crop_balancing: {
+      soil_amendments: "Mulching with green leaves (3 times: at planting, 40 days, and 80 days) is the secret to turmeric; it regulates soil temp and prevents weeds.",
+      nutrient_deficiency_cures: "Curcumin content increases when potassium and sulfur are balanced; avoid excess nitrogen which produces watery watery rhizomes.",
+      pest_disease_management: "Rhizome Rot (Pythium) and Shoot Borer (Conogethes punctiferalis). Soil drenching with Trichoderma harzianum or Copper Oxychloride.",
+      companion_plants: ["Maize (border shade)", "Chilli", "Arhar / Pigeon pea"],
+      crop_rotation: "Rotate with Rice, Sugarcane, Banana, or Maize. Avoid planting after Ginger or Potato."
+    },
+    expected_yield: "20 - 25 metric tonnes fresh rhizomes / hectare (4-5 t cured dry)"
+  },
+  {
+    id: "onion",
+    name: "Onion",
+    scientific_name: "Allium cepa",
+    category: "Vegetables & Greens",
+    folder: "Vegetables_and_Greens",
+    icon: "🧅",
+    summary: "High-consumption bulb vegetable requiring cool early vegetative growth and warm, dry weather for bulb maturation.",
+    climate_requirements: {
+      seasons: ["Rabi (Winter)", "Kharif", "Late Kharif"],
+      min_temp: 13,
+      max_temp: 30,
+      optimal_temp: 20,
+      min_rain: 30,
+      max_rain: 90,
+      humidity_range: "50% - 70%",
+      sunlight_hours: "10 - 12 hours (photoperiod sensitive)"
+    },
+    land_soil_suitability: {
+      soil_types: ["Well-drained Sandy Loam", "Silt Loam with organic matter"],
+      ideal_ph: "6.0 - 7.5",
+      drainage: "High drainage; shallow root system (15-20 cm) rots easily if soil becomes heavy or waterlogged.",
+      land_prep: "Fine crumbly tilth, flat beds or broad bed furrows (BBF) 1.2m wide.",
+      altitude: "0 - 2000m"
+    },
+    how_to_grow: {
+      sowing_time: "Rabi: Oct-Nov nursery, Dec-Jan transplant; Kharif: May-June nursery, July-Aug transplant",
+      seed_rate: "8 - 10 kg/ha for seedlings; 250 kg/ha for sets",
+      spacing: "15 cm row-to-row x 10 cm plant-to-plant",
+      nursery_prep: "Grow seedlings on raised nursery beds for 6-7 weeks until pencil-thick before transplanting.",
+      irrigation_stages: "Frequent shallow irrigations (every 7-8 days). Stop water 10-15 days before harvest to initiate curing.",
+      growth_cycle_days: "120 - 150 days",
+      harvesting_signs: "50% of the plant tops fall over (neck break). Leaves dry out and bulb outer scales become papery."
+    },
+    fertilization: {
+      npk_ratio: "100:50:50 kg/ha (N:P2O5:K2O) + 30 kg/ha Sulfur",
+      basal_dose: "50% N, full P, and full K at transplanting.",
+      top_dressing: "Remaining 50% N applied in two splits: at 30 days and 45 days after transplanting. No nitrogen after 60 days to prevent thick necks.",
+      organic_options: "15-20 t/ha FYM or 5 t/ha poultry manure.",
+      micronutrients: "Sulfur is essential for pungent allyl propyl disulfide compounds and pungency. Spray 0.2% Boron."
+    },
+    crop_balancing: {
+      soil_amendments: "Sulfur fertilization (30-40 kg/ha elemental sulfur or gypsum) deepens bulb color, increases storage life and pungency.",
+      nutrient_deficiency_cures: "Nitrogen excess causes 'bull-head' or thick necks that won't store. Potassium deficiency causes premature drying of leaf tips.",
+      pest_disease_management: "Thrips (scratches leaves causing silvery streaks) and Purple Blotch (Alternaria porri). Spray Neem oil or Fipronil for thrips; Mancozeb for blotch.",
+      companion_plants: ["Carrot (repels onion fly)", "Beetroot", "Lettuce"],
+      crop_rotation: "Rotate with Legumes, Maize, Wheat, or Cabbage. Avoid Solanaceae and other alliums."
+    },
+    expected_yield: "25 - 35 metric tonnes / hectare"
+  },
+  {
+    id: "banana",
+    name: "Banana",
+    scientific_name: "Musa acuminata",
+    category: "Fruits & Orchards",
+    folder: "Fruits_and_Orchards",
+    icon: "🍌",
+    summary: "Fast-growing giant herbaceous perennial demanding tropical warmth, heavy nutrition (especially potash), and continuous water.",
+    climate_requirements: {
+      seasons: ["Perennial (year-round planting)"],
+      min_temp: 18,
+      max_temp: 38,
+      optimal_temp: 27,
+      min_rain: 120,
+      max_rain: 300,
+      humidity_range: "75% - 90%",
+      sunlight_hours: "8 - 10 hours daily; windbreaks required against storms"
+    },
+    land_soil_suitability: {
+      soil_types: ["Deep fertile Alluvial Loam", "Clay Loam with abundant organic matter"],
+      ideal_ph: "6.0 - 7.5",
+      drainage: "At least 1 meter deep well-aerated soil; water stagnation causes Panama wilt.",
+      land_prep: "Deep plowing, prepare pits 50 cm x 50 cm x 50 cm with 10 kg FYM + 250g neem cake + 20g carbofuran/trichoderma.",
+      altitude: "Sea level to 1200m"
+    },
+    how_to_grow: {
+      sowing_time: "June-July (monsoon) or Sept-Oct; Tissue culture plants can be planted year-round",
+      seed_rate: "2500 - 3000 plants/ha (1.8m x 1.8m or 1.5m x 1.5m paired rows)",
+      spacing: "1.8 m x 1.8 m (Grand Naine variety) or 1.5 m x 1.5 m",
+      nursery_prep: "Use healthy sword suckers (1.5 - 2 kg) or primary-hardened tissue cultured disease-free plantlets.",
+      irrigation_stages: "Drip irrigation is standard (15-20 liters/plant/day during vegetative, 20-25 L during flowering/bunch fill).",
+      growth_cycle_days: "300 - 365 days (10 - 12 months for first harvest)",
+      harvesting_signs: "Angles on fruit fingers become rounded, dried floral parts drop off easily, dwarf leaf turns yellow."
+    },
+    fertilization: {
+      npk_ratio: "200:60:300 grams N:P2O5:K2O per plant over the cycle",
+      basal_dose: "All Phosphorus at 30 days after planting.",
+      top_dressing: "Nitrogen and Potassium split into 6-8 micro-doses via drip fertigation from 2nd month to shooting stage.",
+      organic_options: "15-20 kg FYM/plant + 1 kg vermicompost + Pseudomonas fluorescens.",
+      micronutrients: "Spray 0.2% Zinc Sulphate, 0.1% Boric Acid, and 0.5% Ferrous Sulphate at 4th and 6th month."
+    },
+    crop_balancing: {
+      soil_amendments: "High potassium:nitrogen ratio (1.5:1) after shooting thickens finger skin, reduces finger drop, and boosts sugar content.",
+      nutrient_deficiency_cures: "Potassium deficiency shows as yellowing and curling downwards of older leaves. Nitrogen deficiency stuns leaf emergence.",
+      pest_disease_management: "Sigatoka leaf spot, Panama Wilt (Fusarium), and Pseudostem Borer. Deleaf yellow spotted leaves, bag bunches with blue polyethylene covers.",
+      companion_plants: ["Cowpea or French bean intercrop in first 4 months"],
+      crop_rotation: "Banana (Plant) - Banana (1st Ratoon) - Rice / Sunnhemp green manure."
+    },
+    expected_yield: "60 - 90 metric tonnes / hectare (Tissue Culture Grand Naine)"
+  }
+];
+
+// Folder directory structure representing the knowledge vault
+const VAULT_DIRECTORIES = [
+  {
+    name: "Cereals & Grains",
+    folder: "Cereals_and_Grains",
+    icon: "🌾",
+    description: "Staple food crops including Rice, Wheat, Maize, Millets, and Barley with complete seasonal guides.",
+    crops: ["rice", "wheat", "maize"]
+  },
+  {
+    name: "Pulses & Legumes",
+    folder: "Pulses_and_Legumes",
+    icon: "🧆",
+    description: "Nitrogen-fixing protein crops like Chickpea, Lentil, Pigeon Pea, and Soybean.",
+    crops: ["chickpea"]
+  },
+  {
+    name: "Cash Crops & Fibers",
+    folder: "Cash_Crops_and_Fibers",
+    icon: "🧶",
+    description: "High-value industrial and commercial crops including Cotton, Sugarcane, and Jute.",
+    crops: ["cotton", "sugarcane"]
+  },
+  {
+    name: "Vegetables & Greens",
+    folder: "Vegetables_and_Greens",
+    icon: "🍅",
+    description: "Nutritive horticultural vegetables including Tomato, Potato, Onion, and leafy greens.",
+    crops: ["tomato", "potato", "onion"]
+  },
+  {
+    name: "Fruits & Orchards",
+    folder: "Fruits_and_Orchards",
+    icon: "🥭",
+    description: "Perennial and subtropical fruit orchards including Mango, Banana, and Citrus groves.",
+    crops: ["mango", "banana"]
+  },
+  {
+    name: "Spices & Plantation",
+    folder: "Spices_and_Plantation",
+    icon: "🫚",
+    description: "High-margin spice rhizomes and plantation crops like Turmeric, Ginger, and Pepper.",
+    crops: ["turmeric"]
+  },
+  {
+    name: "Soil & Fertilizers Vault",
+    folder: "Soil_and_Fertilizers",
+    icon: "🧪",
+    description: "Comprehensive charts on NPK balancing, soil pH amendments, organic manure, and micronutrients.",
+    crops: []
+  }
+];
+
+// Standard Soil Profiles for Suitability and Rebalancing
+const SOIL_TYPES_REFERENCE = {
+  "Clayey Loam": {
+    ph_range: [5.5, 7.5],
+    drainage: "Moderate to Slow",
+    water_retention: "Very High",
+    best_crops: ["Rice (Paddy)", "Sugarcane", "Wheat", "Banana"],
+    characteristics: "Rich in mineral nutrients, high clay content, requires aeration and organic matter to prevent compaction."
+  },
+  "Alluvial Loam": {
+    ph_range: [6.0, 7.8],
+    drainage: "Good",
+    water_retention: "High",
+    best_crops: ["Wheat", "Rice", "Maize", "Sugarcane", "Potato", "Mango"],
+    characteristics: "Deposited by rivers, most fertile and balanced soil type with optimal silt, sand, and clay balance."
+  },
+  "Deep Black Soil (Vertisols)": {
+    ph_range: [6.8, 8.5],
+    drainage: "Slow when wet, cracks when dry",
+    water_retention: "Extremely High",
+    best_crops: ["Cotton", "Chickpea", "Wheat", "Maize"],
+    characteristics: "Self-plowing, swells when wet and shrinks when dry, rich in calcium and magnesium carbonate."
+  },
+  "Sandy Loam": {
+    ph_range: [5.8, 7.0],
+    drainage: "Very Fast",
+    water_retention: "Low to Moderate",
+    best_crops: ["Tomato", "Potato", "Onion", "Turmeric", "Maize"],
+    characteristics: "Warm, light, loose texture, easy root penetration, requires regular organic mulching and frequent irrigation."
+  },
+  "Red Soil": {
+    ph_range: [5.0, 6.8],
+    drainage: "Rapid",
+    water_retention: "Moderate",
+    best_crops: ["Turmeric", "Mango", "Pulses", "Millets", "Cotton"],
+    characteristics: "Formed by weathering of crystalline rocks, rich in iron oxides, generally low in nitrogen and phosphorus."
+  }
+};
+
+
+// 2. ADVISORY QUERY INTELLIGENCE ENGINE
+/**
+ * AgriCrops Advisory & Q&A Intelligence Engine
+ * Parses farmer/user queries regarding crops, how to grow, fertilization, land suitability, and crop balancing.
+ */
+
+class AdvisoryEngine {
+  constructor(database) {
+    this.database = database;
+  }
+
+  /**
+   * Process a user's natural language question
+   * @param {string} query
+   * @returns {Object} Structured response with title, badges, markdown-like content, and suggestions
+   */
+  answerQuery(query) {
+    const raw = query.trim().toLowerCase();
+
+    if (!raw) {
+      return {
+        type: "error",
+        title: "Empty Question",
+        content: "Please enter a question about any crop, such as *'How to grow Rice?'*, *'Best fertilizer for Wheat'*, *'Which land suits Cotton?'*, or *'How to balance Tomato crops?'*."
+      };
+    }
+
+    // 1. Detect matching crop
+    const detectedCrop = this.findCropInQuery(raw);
+
+    // 2. Detect intent
+    const intent = this.detectIntent(raw);
+
+    // If query is asking about soil suitability across crops without specific crop
+    if (!detectedCrop && (intent === 'land' || raw.includes('soil') || raw.includes('land') || raw.includes('ph'))) {
+      return this.handleGeneralSoilQuery(raw);
+    }
+
+    // If query is asking about general crop balancing / fertilizers without specific crop
+    if (!detectedCrop && (intent === 'balance' || intent === 'fertilizer')) {
+      return this.handleGeneralBalanceQuery(raw);
+    }
+
+    // If a crop was found
+    if (detectedCrop) {
+      return this.generateCropResponse(detectedCrop, intent, raw);
+    }
+
+    // Fallback: search keywords across all crops
+    const keywordMatches = this.database.filter(c => 
+      c.name.toLowerCase().includes(raw) ||
+      c.category.toLowerCase().includes(raw) ||
+      c.land_soil_suitability.soil_types.some(s => s.toLowerCase().includes(raw))
+    );
+
+    if (keywordMatches.length > 0) {
+      return {
+        type: "multi_crop",
+        title: `Found ${keywordMatches.length} Matching Crops for "${query}"`,
+        crops: keywordMatches,
+        content: `Here are the crops related to your query. Click any crop below or ask specific questions like *"How to grow ${keywordMatches[0].name}?"* or *"Fertilizer for ${keywordMatches[0].name}"*:`
+      };
+    }
+
+    // General agricultural help response
+    return {
+      type: "general_help",
+      title: "Agro Expert Advisory",
+      content: `I couldn't identify the specific crop in **"${query}"**.<br><br>
+      You can ask me questions such as:
+      <ul>
+        <li>🌱 <strong>How to grow:</strong> <em>"How to grow Rice?"</em>, <em>"Wheat cultivation steps"</em></li>
+        <li>🧪 <strong>Fertilization:</strong> <em>"What fertilizer is best for Tomato?"</em>, <em>"NPK ratio for Cotton"</em></li>
+        <li>🏞️ <strong>Land & Soil Suitability:</strong> <em>"Which land suits Chickpea?"</em>, <em>"Best soil for Sugarcane"</em></li>
+        <li>⚖️ <strong>Crop Balancing & Health:</strong> <em>"How to balance nutrients for Potato?"</em>, <em>"Pest control for Mango"</em></li>
+      </ul>
+      Or browse the <strong>Knowledge Folders</strong> in the left pane to explore individual crop dossiers!`,
+      suggestions: [
+        "How to grow Rice?",
+        "Which land suits Cotton?",
+        "Fertilizer schedule for Tomato",
+        "How to balance Wheat crop nutrients?"
+      ]
+    };
+  }
+
+  /**
+   * Find matching crop from query string
+   */
+  findCropInQuery(text) {
+    const cropAliases = {
+      rice: ["rice", "paddy", "oryza"],
+      wheat: ["wheat", "gehun", "triticum"],
+      maize: ["maize", "corn", "makka", "zea mays"],
+      tomato: ["tomato", "tomatoes", "tamatar", "lycopersicon"],
+      cotton: ["cotton", "kapas"],
+      chickpea: ["chickpea", "gram", "chana", "garbanzo", "cicer"],
+      potato: ["potato", "potatoes", "aloo"],
+      sugarcane: ["sugarcane", "cane", "ganna"],
+      mango: ["mango", "mangoes", "aam"],
+      turmeric: ["turmeric", "haldi", "curcuma"],
+      onion: ["onion", "onions", "pyaz", "allium"],
+      banana: ["banana", "bananas", "kela"]
+    };
+
+    for (const [cropId, keywords] of Object.entries(cropAliases)) {
+      for (const kw of keywords) {
+        // match word boundary
+        const regex = new RegExp(`\\b${kw}\\b`, 'i');
+        if (regex.test(text)) {
+          return this.database.find(c => c.id === cropId);
+        }
+      }
+    }
+
+    // Fallback simple search
+    return this.database.find(c => text.includes(c.name.toLowerCase()));
+  }
+
+  /**
+   * Detect user intention: grow, fertilizer, land, balance, or comprehensive
+   */
+  detectIntent(text) {
+    const intents = {
+      grow: ["how to grow", "grow", "cultivat", "plant", "sow", "sowing", "nursery", "spacing", "harvest", "lifecycle", "yield"],
+      fertilizer: ["fertiliz", "fetiliz", "npk", "urea", "manure", "compost", "nutrient", "dap", "potash", "feed", "fym"],
+      land: ["which land", "land suit", "soil", "suit for", "ph", "drainage", "ground", "alluvial", "clay", "loam", "black soil", "sand"],
+      balance: ["balance", "balancing", "pest", "disease", "protect", "deficiency", "rotation", "companion", "amendment", "cure", "health"]
+    };
+
+    let matchedIntent = "comprehensive";
+    let highestScore = 0;
+
+    for (const [key, keywords] of Object.entries(intents)) {
+      let score = 0;
+      for (const kw of keywords) {
+        if (text.includes(kw)) {
+          score += kw.length;
+        }
+      }
+      if (score > highestScore) {
+        highestScore = score;
+        matchedIntent = key;
+      }
+    }
+
+    return matchedIntent;
+  }
+
+  /**
+   * Generate customized advisory response based on detected crop and intent
+   */
+  generateCropResponse(crop, intent, rawQuery) {
+    const badges = [
+      { label: crop.category, color: "blue" },
+      { label: `Optimal Temp: ${crop.climate_requirements.optimal_temp}°C`, color: "green" },
+      { label: `Soil pH: ${crop.land_soil_suitability.ideal_ph}`, color: "amber" }
+    ];
+
+    let title = "";
+    let sections = [];
+    let suggestions = [];
+
+    switch (intent) {
+      case "grow":
+        title = `🌱 How to Grow & Cultivate ${crop.name}`;
+        sections = [
+          {
+            heading: "Sowing & Ideal Season",
+            content: `<strong>Sowing Time:</strong> ${crop.how_to_grow.sowing_time}<br>
+            <strong>Seasons:</strong> ${crop.climate_requirements.seasons.join(", ")}<br>
+            <strong>Duration to Maturity:</strong> ${crop.how_to_grow.growth_cycle_days}`
+          },
+          {
+            heading: "Seed Rate & Spacing",
+            content: `<strong>Seed Requirement:</strong> ${crop.how_to_grow.seed_rate}<br>
+            <strong>Row & Plant Spacing:</strong> ${crop.how_to_grow.spacing}<br>
+            <strong>Nursery Protocol:</strong> ${crop.how_to_grow.nursery_prep}`
+          },
+          {
+            heading: "Water & Irrigation Management",
+            content: `<strong>Critical Irrigation Stages:</strong> ${crop.how_to_grow.irrigation_stages}<br>
+            <strong>Optimal Rainfall / Moisture:</strong> ${crop.climate_requirements.min_rain} - ${crop.climate_requirements.max_rain} mm/month`
+          },
+          {
+            heading: "Harvesting Indicators & Yield",
+            content: `<strong>When to Harvest:</strong> ${crop.how_to_grow.harvesting_signs}<br>
+            <strong>Expected Yield:</strong> <span class="badge-yield">${crop.expected_yield}</span>`
+          }
+        ];
+        suggestions = [
+          `What fertilizer is best for ${crop.name}?`,
+          `Which land and soil suits ${crop.name}?`,
+          `How to balance pests and soil for ${crop.name}?`
+        ];
+        break;
+
+      case "fertilizer":
+        title = `🧪 Fertilization Protocol for ${crop.name}`;
+        sections = [
+          {
+            heading: "Recommended NPK Formula",
+            content: `<div class="npk-box"><strong>Target NPK Ratio:</strong> <span>${crop.fertilization.npk_ratio}</span></div>`
+          },
+          {
+            heading: "Basal Application (At Sowing / Planting)",
+            content: crop.fertilization.basal_dose
+          },
+          {
+            heading: "Top Dressing & Split Application",
+            content: crop.fertilization.top_dressing
+          },
+          {
+            heading: "Organic Manure & Bio-Fertilizers",
+            content: crop.fertilization.organic_options
+          },
+          {
+            heading: "Essential Micronutrients",
+            content: crop.fertilization.micronutrients
+          }
+        ];
+        suggestions = [
+          `How to grow ${crop.name}?`,
+          `Which land suits ${crop.name}?`,
+          `How to balance soil and prevent disease in ${crop.name}?`
+        ];
+        break;
+
+      case "land":
+        title = `🏞️ Land & Soil Suitability for ${crop.name}`;
+        sections = [
+          {
+            heading: "Best Suited Soil Types",
+            content: `<strong>Recommended Soils:</strong> ${crop.land_soil_suitability.soil_types.join(", ")}<br>
+            <strong>Ideal Soil pH:</strong> <mark class="ph-tag">${crop.land_soil_suitability.ideal_ph}</mark>`
+          },
+          {
+            heading: "Drainage & Water Absorption",
+            content: crop.land_soil_suitability.drainage
+          },
+          {
+            heading: "Land Preparation & Tillage",
+            content: crop.land_soil_suitability.land_prep
+          },
+          {
+            heading: "Topography & Altitude",
+            content: `Optimal elevation: ${crop.land_soil_suitability.altitude || "Plains to mid-hills"}`
+          }
+        ];
+        suggestions = [
+          `How to fertilize ${crop.name}?`,
+          `How to grow ${crop.name}?`,
+          `How to balance nutrients for ${crop.name}?`
+        ];
+        break;
+
+      case "balance":
+        title = `⚖️ Crop Balancing, Health & Protection for ${crop.name}`;
+        sections = [
+          {
+            heading: "Soil Health & pH Amendments",
+            content: crop.crop_balancing.soil_amendments
+          },
+          {
+            heading: "Nutrient Deficiency Diagnostic & Cures",
+            content: crop.crop_balancing.nutrient_deficiency_cures
+          },
+          {
+            heading: "Integrated Pest & Disease Balancing",
+            content: crop.crop_balancing.pest_disease_management
+          },
+          {
+            heading: "Companion Crops & Synergies",
+            content: `<strong>Beneficial Companion Plants:</strong> ${crop.crop_balancing.companion_plants.join(", ")}`
+          },
+          {
+            heading: "Crop Rotation Strategy",
+            content: `<strong>Recommended Rotation:</strong> ${crop.crop_balancing.crop_rotation}`
+          }
+        ];
+        suggestions = [
+          `How to grow ${crop.name}?`,
+          `Fertilizer schedule for ${crop.name}`,
+          `Which land suits ${crop.name}?`
+        ];
+        break;
+
+      default: // Comprehensive summary
+        title = `${crop.icon} Complete Agro Advisory: ${crop.name} (${crop.scientific_name})`;
+        sections = [
+          {
+            heading: "Crop Overview",
+            content: crop.summary
+          },
+          {
+            heading: "1. Land & Soil Suitability",
+            content: `<strong>Soils:</strong> ${crop.land_soil_suitability.soil_types.join(", ")} | <strong>Ideal pH:</strong> ${crop.land_soil_suitability.ideal_ph}<br>
+            <strong>Land Prep:</strong> ${crop.land_soil_suitability.land_prep}`
+          },
+          {
+            heading: "2. How to Grow",
+            content: `<strong>Sowing:</strong> ${crop.how_to_grow.sowing_time} (${crop.how_to_grow.growth_cycle_days})<br>
+            <strong>Seed Rate & Spacing:</strong> ${crop.how_to_grow.seed_rate} at ${crop.how_to_grow.spacing}<br>
+            <strong>Irrigation:</strong> ${crop.how_to_grow.irrigation_stages}`
+          },
+          {
+            heading: "3. Fertilization",
+            content: `<strong>NPK Ratio:</strong> ${crop.fertilization.npk_ratio}<br>
+            <strong>Basal:</strong> ${crop.fertilization.basal_dose}<br>
+            <strong>Top Dressing:</strong> ${crop.fertilization.top_dressing}`
+          },
+          {
+            heading: "4. Crop Balancing & Protection",
+            content: `<strong>Soil Amendments:</strong> ${crop.crop_balancing.soil_amendments}<br>
+            <strong>Pest Balancing:</strong> ${crop.crop_balancing.pest_disease_management}<br>
+            <strong>Rotation:</strong> ${crop.crop_balancing.crop_rotation}`
+          },
+          {
+            heading: "Expected Yield Potential",
+            content: `<strong>Yield:</strong> ${crop.expected_yield}`
+          }
+        ];
+        suggestions = [
+          `How to grow ${crop.name}?`,
+          `Fertilizer schedule for ${crop.name}`,
+          `Which land suits ${crop.name}?`,
+          `How to balance pests and nutrients in ${crop.name}?`
+        ];
+        break;
+    }
+
+    return {
+      type: "crop_detail",
+      cropId: crop.id,
+      title: title,
+      badges: badges,
+      sections: sections,
+      suggestions: suggestions
+    };
+  }
+
+  /**
+   * Handle generalized soil and land inquiries
+   */
+  handleGeneralSoilQuery(query) {
+    return {
+      type: "soil_guide",
+      title: "🏞️ Land & Soil Suitability Guide",
+      badges: [
+        { label: "Soil Science", color: "amber" },
+        { label: "pH Diagnostics", color: "blue" }
+      ],
+      sections: [
+        {
+          heading: "1. Clayey Loam Soil",
+          content: "<strong>Properties:</strong> High water-retention, dense mineral content.<br><strong>Best Crops:</strong> Rice (Paddy), Sugarcane, Banana, Wheat.<br><strong>Balancing Tip:</strong> Incorporate compost or green manure to prevent heavy crusting."
+        },
+        {
+          heading: "2. Alluvial Loam Soil",
+          content: "<strong>Properties:</strong> River-deposited, optimal balance of sand, silt, and clay. Highly fertile.<br><strong>Best Crops:</strong> Wheat, Maize, Potato, Tomato, Sugarcane.<br><strong>Balancing Tip:</strong> Maintain organic matter with crop rotation."
+        },
+        {
+          heading: "3. Deep Black Soil (Vertisols / Regur)",
+          content: "<strong>Properties:</strong> High moisture retention, swells when wet, self-plowing cracks in dry weather.<br><strong>Best Crops:</strong> Cotton, Chickpea, Sorghum, Wheat.<br><strong>Balancing Tip:</strong> Deep summer plowing to preserve moisture and destroy soil pests."
+        },
+        {
+          heading: "4. Sandy Loam Soil",
+          content: "<strong>Properties:</strong> Fast draining, warms quickly in spring, low moisture holding.<br><strong>Best Crops:</strong> Tomato, Potato, Onion, Groundnut, Melons.<br><strong>Balancing Tip:</strong> Frequent light irrigations and heavy organic mulching."
+        },
+        {
+          heading: "5. Soil pH Correction (Balancing)",
+          content: "• <strong>Acidic Soils (pH < 5.8):</strong> Add Agricultural Lime (CaCO3) or Dolomite.<br>• <strong>Alkaline Soils (pH > 7.8):</strong> Add Gypsum (CaSO4) and elemental sulfur."
+        }
+      ],
+      suggestions: [
+        "Which land suits Rice?",
+        "Which land suits Cotton?",
+        "What soil is best for Tomato?",
+        "How to balance acidic soil?"
+      ]
+    };
+  }
+
+  /**
+   * Handle generalized crop balancing and fertilization inquiries
+   */
+  handleGeneralBalanceQuery(query) {
+    return {
+      type: "balance_guide",
+      title: "⚖️ Crop Balancing & Fertilization Master Rules",
+      badges: [
+        { label: "Crop Health", color: "green" },
+        { label: "NPK Management", color: "blue" }
+      ],
+      sections: [
+        {
+          heading: "The 4R Nutrient Stewardship",
+          content: "1. <strong>Right Source:</strong> Match fertilizer type to crop needs.<br>2. <strong>Right Rate:</strong> Test soil before applying; avoid nitrogen overload.<br>3. <strong>Right Time:</strong> Apply basal at sowing; split nitrogen at tillering/flowering.<br>4. <strong>Right Place:</strong> Band placement below seeds prevents volatilization."
+        },
+        {
+          heading: "Balancing Nitrogen Overload",
+          content: "Too much Nitrogen causes excessive tender foliage, lodging (plants falling), delays fruit ripening, and attracts aphids/blast. Balance with Potassium and Phosphorus."
+        },
+        {
+          heading: "Pest Balancing Through Companion Planting",
+          content: "• Plant <strong>Marigold</strong> around tomatoes to stop fruit borers and nematodes.<br>• Intercrop <strong>Cowpea</strong> in cotton as a trap crop for sucking pests.<br>• Sow <strong>Mustard</strong> in wheat (9:1 ratio) to deter aphid outbreaks."
+        },
+        {
+          heading: "Restoring Tired Land with Crop Rotation",
+          content: "Never plant the same crop family consecutively. Rotate heavy feeders (Rice, Maize) with soil-restoring legumes (Chickpea, Lentils) that fix atmospheric nitrogen naturally."
+        }
+      ],
+      suggestions: [
+        "NPK schedule for Tomato",
+        "How to balance Cotton crops?",
+        "Fertilizer for Rice",
+        "How to grow Chickpea?"
+      ]
+    };
+  }
+}
+
+
+// 3. WEATHER & CLIMATE MATCHING SERVICE
+/**
+ * AgriCrops Weather & Climate-Based Crop Recommendation Service
+ * Integrates with Open-Meteo API (free, no API key needed) with offline fallback presets,
+ * and calculates crop suitability based on live weather and land/soil characteristics.
+ */
+
+class WeatherService {
+  constructor(database, soilReference) {
+    this.database = database;
+    this.soilReference = soilReference;
+    
+    // Preset locations for quick testing or offline fallback
+    this.presetLocations = [
+      { name: "Ludhiana (Punjab)", country: "India", lat: 30.9010, lon: 75.8573, defaultSoil: "Alluvial Loam" },
+      { name: "Nagpur (Maharashtra)", country: "India", lat: 21.1458, lon: 79.0882, defaultSoil: "Deep Black Soil (Vertisols)" },
+      { name: "Bengaluru (Karnataka)", country: "India", lat: 12.9716, lon: 77.5946, defaultSoil: "Red Soil" },
+      { name: "Fresno (California)", country: "USA", lat: 36.7468, lon: -119.7726, defaultSoil: "Sandy Loam" },
+      { name: "Nairobi (Rift Valley)", country: "Kenya", lat: -1.2921, lon: 36.8219, defaultSoil: "Clayey Loam" },
+      { name: "São Paulo", country: "Brazil", lat: -23.5505, lon: -46.6333, defaultSoil: "Red Soil" }
+    ];
+
+    // Current active weather state
+    this.currentWeather = {
+      locationName: "Ludhiana (Punjab), India",
+      latitude: 30.9010,
+      longitude: 75.8573,
+      temperature: 24.5,
+      humidity: 62,
+      precipitation: 15, // mm monthly / 7-day projection
+      weatherCode: 1, // Mainly clear
+      conditionText: "Mainly Clear & Sunny",
+      windSpeed: 11.2,
+      isLive: false
+    };
+  }
+
+  /**
+   * Fetch weather for a given city query or coordinates
+   */
+  async fetchWeather(locationQuery) {
+    try {
+      let lat, lon, resolvedName;
+
+      // Check if location matches a preset first
+      const matchedPreset = this.presetLocations.find(p => 
+        p.name.toLowerCase().includes(locationQuery.toLowerCase()) ||
+        locationQuery.toLowerCase().includes(p.name.toLowerCase().split(' ')[0])
+      );
+
+      if (matchedPreset) {
+        lat = matchedPreset.lat;
+        lon = matchedPreset.lon;
+        resolvedName = `${matchedPreset.name}, ${matchedPreset.country}`;
+      } else {
+        // Geocode via Open-Meteo Geocoding API
+        const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(locationQuery)}&count=1&language=en&format=json`;
+        const geoRes = await fetch(geoUrl);
+        if (!geoRes.ok) throw new Error("Geocoding failed");
+        const geoData = await geoRes.json();
+        if (!geoData.results || geoData.results.length === 0) {
+          throw new Error("Location not found");
+        }
+        const topResult = geoData.results[0];
+        lat = topResult.latitude;
+        lon = topResult.longitude;
+        resolvedName = `${topResult.name}${topResult.admin1 ? ', ' + topResult.admin1 : ''}, ${topResult.country}`;
+      }
+
+      // Fetch weather from Open-Meteo
+      const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,precipitation&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=auto`;
+      const wRes = await fetch(weatherUrl);
+      if (!wRes.ok) throw new Error("Weather API failed");
+      const wData = await wRes.json();
+
+      const current = wData.current || {};
+      const condition = this.interpretWeatherCode(current.weather_code);
+
+      // Estimate monthly precipitation rate from daily 7-day average
+      let precipWeekly = 0;
+      if (wData.daily && wData.daily.precipitation_sum) {
+        precipWeekly = wData.daily.precipitation_sum.reduce((a, b) => a + (b || 0), 0);
+      }
+      const estimatedMonthlyRain = Math.round(precipWeekly * 4.2);
+
+      this.currentWeather = {
+        locationName: resolvedName,
+        latitude: lat,
+        longitude: lon,
+        temperature: Math.round(current.temperature_2m ?? 24),
+        humidity: Math.round(current.relative_humidity_2m ?? 55),
+        precipitation: Math.max(estimatedMonthlyRain, Math.round((current.precipitation ?? 0) * 30)),
+        weatherCode: current.weather_code ?? 0,
+        conditionText: condition.text,
+        icon: condition.icon,
+        windSpeed: Math.round(current.wind_speed_10m ?? 10),
+        dailyMin: wData.daily?.temperature_2m_min?.[0] ?? 18,
+        dailyMax: wData.daily?.temperature_2m_max?.[0] ?? 29,
+        isLive: true
+      };
+
+      return { success: true, weather: this.currentWeather };
+    } catch (err) {
+      console.warn("Weather fetch failed, utilizing resilient realistic simulation:", err.message);
+      // Fallback to simulated regional profile
+      return this.useFallbackWeather(locationQuery);
+    }
+  }
+
+  /**
+   * Resilient fallback in offline environment
+   */
+  useFallbackWeather(query) {
+    const defaultLocation = this.presetLocations[0];
+    this.currentWeather = {
+      locationName: query || defaultLocation.name,
+      latitude: defaultLocation.lat,
+      longitude: defaultLocation.lon,
+      temperature: 25,
+      humidity: 60,
+      precipitation: 65,
+      weatherCode: 1,
+      conditionText: "Pleasant & Clear (Simulated Live Station)",
+      icon: "☀️",
+      windSpeed: 12,
+      dailyMin: 18,
+      dailyMax: 29,
+      isLive: false,
+      note: "Offline Mode Active (Using cached regional climate data)"
+    };
+    return { success: true, weather: this.currentWeather };
+  }
+
+  /**
+   * Interpret WMO weather codes into human friendly text and emoji
+   */
+  interpretWeatherCode(code) {
+    if (code === 0) return { text: "Clear Sky", icon: "☀️" };
+    if (code === 1 || code === 2) return { text: "Partly Cloudy", icon: "🌤️" };
+    if (code === 3) return { text: "Overcast", icon: "☁️" };
+    if (code >= 45 && code <= 48) return { text: "Foggy / Mist", icon: "🌫️" };
+    if (code >= 51 && code <= 55) return { text: "Light Drizzle", icon: "🌦️" };
+    if (code >= 61 && code <= 65) return { text: "Rain Showers", icon: "🌧️" };
+    if (code >= 71 && code <= 77) return { text: "Snowfall", icon: "❄️" };
+    if (code >= 80 && code <= 82) return { text: "Heavy Rain Showers", icon: "⛈️" };
+    if (code >= 95) return { text: "Thunderstorm", icon: "⚡" };
+    return { text: "Mild & Fair", icon: "⛅" };
+  }
+
+  /**
+   * Calculate crop suitability scores based on Climate + Selected Land/Soil
+   * @param {string} selectedSoil - User chosen soil type
+   * @param {Object} overrideWeather - Optional custom weather parameters
+   * @returns {Array} Ranked list of crops with suitability score, status, and detailed reasoning
+   */
+  evaluateCropsForClimateAndLand(selectedSoil, overrideWeather = null) {
+    const weather = overrideWeather || this.currentWeather;
+    const temp = weather.temperature;
+    const humidity = weather.humidity;
+    const rain = weather.precipitation;
+
+    const evaluated = this.database.map(crop => {
+      const clim = crop.climate_requirements;
+      const land = crop.land_soil_suitability;
+
+      // 1. Temperature Fitness (Weight 40%)
+      let tempScore = 0;
+      if (temp >= clim.min_temp && temp <= clim.max_temp) {
+        const delta = Math.abs(temp - clim.optimal_temp);
+        const maxSpan = (clim.max_temp - clim.min_temp) / 2;
+        tempScore = Math.max(50, 100 - (delta / maxSpan) * 50);
+      } else if (temp < clim.min_temp) {
+        const deficit = clim.min_temp - temp;
+        tempScore = Math.max(0, 50 - deficit * 10);
+      } else {
+        const excess = temp - clim.max_temp;
+        tempScore = Math.max(0, 50 - excess * 10);
+      }
+
+      // 2. Rainfall & Moisture Fitness (Weight 25%)
+      let rainScore = 0;
+      if (rain >= clim.min_rain && rain <= clim.max_rain) {
+        rainScore = 100;
+      } else if (rain < clim.min_rain) {
+        const ratio = rain / clim.min_rain;
+        rainScore = Math.max(20, ratio * 90);
+      } else {
+        const surplus = rain - clim.max_rain;
+        rainScore = Math.max(30, 100 - surplus * 0.3);
+      }
+
+      // 3. Soil Suitability Score (Weight 35%)
+      let soilScore = 50; // default baseline
+      let soilMatchStatus = "Moderate compatibility";
+      const matchesDirect = land.soil_types.some(s => 
+        s.toLowerCase().includes(selectedSoil.toLowerCase()) || 
+        selectedSoil.toLowerCase().includes(s.toLowerCase().split(' ')[0])
+      );
+
+      if (matchesDirect) {
+        soilScore = 100;
+        soilMatchStatus = `Perfect match for ${selectedSoil}`;
+      } else if (
+        (selectedSoil.includes("Loam") && land.soil_types.some(s => s.includes("Loam"))) ||
+        (selectedSoil.includes("Clay") && land.soil_types.some(s => s.includes("Clay")))
+      ) {
+        soilScore = 80;
+        soilMatchStatus = `Good texture affinity with ${selectedSoil}`;
+      } else {
+        soilScore = 40;
+        soilMatchStatus = `Suboptimal soil type (Prefers ${land.soil_types.join(", ")})`;
+      }
+
+      // Total Weighted Score
+      const totalScore = Math.round((tempScore * 0.40) + (rainScore * 0.25) + (soilScore * 0.35));
+
+      // Determine recommendation grade
+      let recommendation = "";
+      let statusColor = "";
+      if (totalScore >= 85) {
+        recommendation = "🌟 Highly Recommended";
+        statusColor = "status-excellent";
+      } else if (totalScore >= 70) {
+        recommendation = "✅ Good / Recommended";
+        statusColor = "status-good";
+      } else if (totalScore >= 50) {
+        recommendation = "⚠️ Moderate / Needs Irrigation Care";
+        statusColor = "status-warning";
+      } else {
+        recommendation = "❌ Not Advisable Currently";
+        statusColor = "status-poor";
+      }
+
+      // Detailed diagnostic reasoning
+      let reason = `Temperature ${temp}°C (optimal: ${clim.optimal_temp}°C). `;
+      if (tempScore >= 80) reason += "Thermal conditions are ideal. ";
+      else if (temp < clim.min_temp) reason += `Current climate is cooler than the crop's minimum threshold (${clim.min_temp}°C). `;
+      else if (temp > clim.max_temp) reason += `Heat stress possible; exceeds optimal range. `;
+
+      reason += `${soilMatchStatus}. `;
+      if (crop.how_to_grow.sowing_time.toLowerCase().includes("summer") && temp < 20) {
+        reason += "Consider waiting for warmer seasonal cycle.";
+      }
+
+      return {
+        crop: crop,
+        score: totalScore,
+        tempScore: Math.round(tempScore),
+        rainScore: Math.round(rainScore),
+        soilScore: Math.round(soilScore),
+        recommendation: recommendation,
+        statusColor: statusColor,
+        reason: reason,
+        seasons: clim.seasons,
+        idealSoil: land.soil_types[0],
+        ph: land.ideal_ph
+      };
+    });
+
+    // Sort by score descending
+    return evaluated.sort((a, b) => b.score - a.score);
+  }
+}
+
+
+// 4. FOLDER EXPLORER
+/**
+ * AgriCrops Interactive Folder & Knowledge Vault Explorer
+ * Manages the interactive folder hierarchy: clicking a folder opens its contents,
+ * files, and detailed cultivation dossiers.
+ */
+
+class FolderExplorer {
+  constructor(directories, cropDatabase, onOpenFileCallback) {
+    this.directories = directories;
+    this.cropDatabase = cropDatabase;
+    this.onOpenFile = onOpenFileCallback;
+    this.activeFolderId = null;
+    this.currentPath = ["Knowledge Vault"];
+    
+    // File documents registry inside folders
+    this.folderDocuments = {
+      "Cereals_and_Grains": [
+        { id: "rice", type: "crop", name: "Rice (Paddy) - Complete Dossier.crop", ext: "crop", icon: "🌾", cropId: "rice" },
+        { id: "rice_guide_md", type: "doc", name: "rice_cultivation_guide.md", ext: "md", icon: "📄", path: "data/knowledge_vault/Cereals_and_Grains/rice_cultivation_guide.md" },
+        { id: "wheat", type: "crop", name: "Wheat - Production Manual.crop", ext: "crop", icon: "🌾", cropId: "wheat" },
+        { id: "wheat_guide_md", type: "doc", name: "wheat_management_dossier.md", ext: "md", icon: "📄", path: "data/knowledge_vault/Cereals_and_Grains/wheat_management_dossier.md" },
+        { id: "maize", type: "crop", name: "Maize (Corn) - Hybrid Protocol.crop", ext: "crop", icon: "🌽", cropId: "maize" }
+      ],
+      "Pulses_and_Legumes": [
+        { id: "chickpea", type: "crop", name: "Chickpea (Gram) - Nitrogen Fixing Guide.crop", ext: "crop", icon: "🧆", cropId: "chickpea" }
+      ],
+      "Cash_Crops_and_Fibers": [
+        { id: "cotton", type: "crop", name: "Cotton - Bt Cultivation Protocol.crop", ext: "crop", icon: "🧶", cropId: "cotton" },
+        { id: "sugarcane", type: "crop", name: "Sugarcane - Sugar Yield Optimization.crop", ext: "crop", icon: "🎋", cropId: "sugarcane" }
+      ],
+      "Vegetables_and_Greens": [
+        { id: "tomato", type: "crop", name: "Tomato - High Yield Polyhouse & Open Field.crop", ext: "crop", icon: "🍅", cropId: "tomato" },
+        { id: "tomato_guide_md", type: "doc", name: "tomato_masterclass.md", ext: "md", icon: "📄", path: "data/knowledge_vault/Vegetables_and_Greens/tomato_masterclass.md" },
+        { id: "potato", type: "crop", name: "Potato - Tuber Nutrition & Blight Control.crop", ext: "crop", icon: "🥔", cropId: "potato" },
+        { id: "onion", type: "crop", name: "Onion - Bulb Storage & Curing Guide.crop", ext: "crop", icon: "🧅", cropId: "onion" }
+      ],
+      "Fruits_and_Orchards": [
+        { id: "mango", type: "crop", name: "Mango - Orchard Management & Pruning.crop", ext: "crop", icon: "🥭", cropId: "mango" },
+        { id: "banana", type: "crop", name: "Banana - Drip Fertigation & Grand Naine Protocol.crop", ext: "crop", icon: "🍌", cropId: "banana" }
+      ],
+      "Spices_and_Plantation": [
+        { id: "turmeric", type: "crop", name: "Turmeric - Curcumin Enhancement & Mulching.crop", ext: "crop", icon: "🫚", cropId: "turmeric" }
+      ],
+      "Soil_and_Fertilizers": [
+        { id: "soil_npk_md", type: "doc", name: "soil_balancing_and_npk_formulas.md", ext: "md", icon: "🧪", path: "data/knowledge_vault/Soil_and_Fertilizers/soil_balancing_and_npk_formulas.md" }
+      ]
+    };
+  }
+
+  /**
+   * Render the folder explorer into the target container
+   */
+  render(containerElement) {
+    if (!containerElement) return;
+
+    let html = `
+      <div class="explorer-card">
+        <div class="explorer-header">
+          <div class="explorer-title">
+            <span class="folder-header-icon">🗂️</span>
+            <div>
+              <h3>Agricultural Knowledge Vault & Folders</h3>
+              <p class="subtitle">Click any folder to open and explore crop dossiers, soil guides, and cultivation files.</p>
+            </div>
+          </div>
+          <div class="explorer-actions">
+            <button class="btn-sm btn-outline" id="btn-root-vault">
+              <span>🏠 Root Vault</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Breadcrumb Navigation -->
+        <div class="explorer-breadcrumbs" id="explorer-breadcrumbs">
+          ${this.renderBreadcrumbs()}
+        </div>
+
+        <!-- Main Explorer Content View -->
+        <div class="explorer-body">
+          <div class="explorer-grid" id="explorer-items-container">
+            ${this.activeFolderId ? this.renderFolderContents(this.activeFolderId) : this.renderRootFolders()}
+          </div>
+        </div>
+      </div>
+    `;
+
+    containerElement.innerHTML = html;
+    this.bindEvents(containerElement);
+  }
+
+  /**
+   * Render breadcrumb bar
+   */
+  renderBreadcrumbs() {
+    let crumbs = `<span class="crumb active" data-folder="">Knowledge Vault</span>`;
+    if (this.activeFolderId) {
+      const folderObj = this.directories.find(d => d.folder === this.activeFolderId);
+      if (folderObj) {
+        crumbs += ` <span class="crumb-separator">/</span> <span class="crumb active-leaf">${folderObj.name}</span>`;
+      }
+    }
+    return crumbs;
+  }
+
+  /**
+   * Render top-level category folders
+   */
+  renderRootFolders() {
+    return this.directories.map(dir => {
+      const fileCount = (this.folderDocuments[dir.folder] || []).length;
+      return `
+        <div class="folder-tile" data-folder-id="${dir.folder}" role="button" tabindex="0">
+          <div class="folder-visual">
+            <div class="folder-tab"></div>
+            <div class="folder-front">
+              <span class="folder-emoji">${dir.icon}</span>
+            </div>
+          </div>
+          <div class="folder-info">
+            <h4 class="folder-name">${dir.name}</h4>
+            <span class="folder-badge">${fileCount} ${fileCount === 1 ? 'file' : 'files'}</span>
+            <p class="folder-desc">${dir.description}</p>
+          </div>
+          <div class="folder-action-hint">
+            <span>Click to Open Folder →</span>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  /**
+   * Render contents of an opened folder
+   */
+  renderFolderContents(folderId) {
+    const files = this.folderDocuments[folderId] || [];
+    const folderObj = this.directories.find(d => d.folder === folderId);
+
+    if (files.length === 0) {
+      return `
+        <div class="empty-folder-state">
+          <span class="empty-icon">📂</span>
+          <p>This folder is currently empty.</p>
+          <button class="btn-sm btn-primary" id="btn-back-to-vault">← Back to All Folders</button>
+        </div>
+      `;
+    }
+
+    let filesHtml = `
+      <div class="opened-folder-banner">
+        <button class="btn-back-crumb" id="btn-back-to-vault">
+          ← Back to Folders
+        </button>
+        <span class="opened-folder-title">${folderObj ? folderObj.name : folderId}</span>
+        <span class="files-count-badge">${files.length} items</span>
+      </div>
+      <div class="files-list-view">
+    `;
+
+    filesHtml += files.map(file => {
+      let metaText = "";
+      if (file.type === "crop") {
+        const crop = this.cropDatabase.find(c => c.id === file.cropId);
+        metaText = crop ? `${crop.category} • pH ${crop.land_soil_suitability.ideal_ph} • ${crop.climate_requirements.seasons[0]}` : "Crop Dossier";
+      } else {
+        metaText = "Cultivation Document • Markdown Guide";
+      }
+
+      return `
+        <div class="file-item-row" data-file-id="${file.id}" data-file-type="${file.type}" data-crop-id="${file.cropId || ''}" data-file-path="${file.path || ''}">
+          <div class="file-icon-box">
+            <span class="file-icon">${file.icon}</span>
+          </div>
+          <div class="file-details">
+            <h4 class="file-title">${file.name}</h4>
+            <p class="file-meta">${metaText}</p>
+          </div>
+          <div class="file-action">
+            <button class="btn-open-file">Open Dossier</button>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+    filesHtml += `</div>`;
+    return filesHtml;
+  }
+
+  /**
+   * Bind click listeners for folder opening and file loading
+   */
+  bindEvents(container) {
+    // Click folder tile to open
+    const folderTiles = container.querySelectorAll(".folder-tile");
+    folderTiles.forEach(tile => {
+      tile.addEventListener("click", () => {
+        const folderId = tile.getAttribute("data-folder-id");
+        this.openFolder(folderId, container);
+      });
+    });
+
+    // Back to root vault
+    const backBtn = container.querySelector("#btn-back-to-vault");
+    if (backBtn) {
+      backBtn.addEventListener("click", () => {
+        this.openFolder(null, container);
+      });
+    }
+
+    const rootBtn = container.querySelector("#btn-root-vault");
+    if (rootBtn) {
+      rootBtn.addEventListener("click", () => {
+        this.openFolder(null, container);
+      });
+    }
+
+    // Breadcrumb root click
+    const crumb = container.querySelector('.crumb[data-folder=""]');
+    if (crumb) {
+      crumb.addEventListener("click", () => {
+        this.openFolder(null, container);
+      });
+    }
+
+    // Open file items
+    const fileRows = container.querySelectorAll(".file-item-row");
+    fileRows.forEach(row => {
+      row.addEventListener("click", () => {
+        const fileId = row.getAttribute("data-file-id");
+        const fileType = row.getAttribute("data-file-type");
+        const cropId = row.getAttribute("data-crop-id");
+        const filePath = row.getAttribute("data-file-path");
+
+        if (typeof this.onOpenFile === "function") {
+          this.onOpenFile({ id: fileId, type: fileType, cropId: cropId, path: filePath });
+        }
+      });
+    });
+  }
+
+  /**
+   * Open or navigate to folder
+   */
+  openFolder(folderId, container) {
+    this.activeFolderId = folderId;
+    this.render(container);
+  }
+}
+
+
+// 5. APPLICATION CONTROLLER
+/**
+ * AgriCrops System - Main Client Controller
+ * Connects Advisory Engine, Folder Explorer, Weather Service, and UI interactions.
+ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize Services
+  const advisoryEngine = new AdvisoryEngine(CROPS_DATABASE);
+  const weatherService = new WeatherService(CROPS_DATABASE, SOIL_TYPES_REFERENCE);
+
+  // Initialize Folder Explorer with file opener callback
+  const folderExplorer = new FolderExplorer(
+    VAULT_DIRECTORIES,
+    CROPS_DATABASE,
+    (fileMeta) => handleOpenFile(fileMeta)
+  );
+
+  // DOM Elements
+  const tabButtons = document.querySelectorAll(".tab-btn");
+  const tabContents = document.querySelectorAll(".tab-content");
+  const chatMessagesContainer = document.getElementById("chat-messages");
+  const chatForm = document.getElementById("chat-form");
+  const chatInput = document.getElementById("chat-input");
+  const quickPromptPills = document.querySelectorAll(".quick-prompt-pill");
+  const foldersContainer = document.getElementById("folders-container");
+  
+  // Weather & Recommendation Elements
+  const weatherSearchInput = document.getElementById("weather-search-input");
+  const btnWeatherSearch = document.getElementById("btn-weather-search");
+  const quickLocPills = document.querySelectorAll(".quick-loc-pill");
+  const soilSelectFilter = document.getElementById("soil-select-filter");
+  const rankedCropsContainer = document.getElementById("ranked-crops-container");
+
+  // Modal Elements
+  const fileModalOverlay = document.getElementById("file-modal-overlay");
+  const modalDocTitle = document.getElementById("modal-doc-title");
+  const modalDocContent = document.getElementById("modal-doc-content");
+  const btnCloseModal = document.getElementById("btn-close-modal");
+  const btnModalCloseAction = document.getElementById("btn-modal-close-action");
+  const btnAskAboutThisCrop = document.getElementById("btn-ask-about-crop");
+
+  let currentModalCrop = null;
+
+  // 1. TAB NAVIGATION
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetTab = btn.getAttribute("data-tab");
+      
+      tabButtons.forEach(b => b.classList.remove("active"));
+      tabContents.forEach(c => c.classList.remove("active"));
+
+      btn.classList.add("active");
+      const targetContent = document.getElementById(targetTab);
+      if (targetContent) {
+        targetContent.classList.add("active");
+      }
+
+      // Re-render folder explorer when switching to vault tab
+      if (targetTab === "vault-tab") {
+        folderExplorer.render(foldersContainer);
+      }
+    });
+  });
+
+  // Render initial folder explorer
+  folderExplorer.render(foldersContainer);
+
+  // 2. CHAT & ADVISORY SYSTEM
+  chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const query = chatInput.value.trim();
+    if (!query) return;
+
+    // Append user message
+    appendUserMessage(query);
+    chatInput.value = "";
+
+    // Show thinking / process response
+    showBotTypingAndReply(query);
+  });
+
+  // Quick Prompt Pills
+  quickPromptPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      const promptText = pill.getAttribute("data-prompt");
+      chatInput.value = promptText;
+      chatForm.dispatchEvent(new Event("submit"));
+    });
+  });
+
+  function appendUserMessage(text) {
+    const userMsg = document.createElement("div");
+    userMsg.className = "msg-bubble msg-user";
+    userMsg.innerHTML = `
+      <div class="avatar avatar-user">🧑‍🌾</div>
+      <div class="msg-body">${escapeHtml(text)}</div>
+    `;
+    chatMessagesContainer.appendChild(userMsg);
+    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+  }
+
+  function showBotTypingAndReply(query) {
+    // Generate structured answer from advisory engine
+    const result = advisoryEngine.answerQuery(query);
+
+    const botMsg = document.createElement("div");
+    botMsg.className = "msg-bubble msg-bot";
+
+    let bodyHtml = `<div class="avatar avatar-bot">🌾</div><div class="msg-body">`;
+    
+    if (result.title) {
+      bodyHtml += `<div class="response-title">${result.title}</div>`;
+    }
+
+    if (result.badges && result.badges.length > 0) {
+      bodyHtml += `<div class="response-badges">`;
+      result.badges.forEach(b => {
+        bodyHtml += `<span class="badge ${b.color}">${b.label}</span>`;
+      });
+      bodyHtml += `</div>`;
+    }
+
+    if (result.content) {
+      bodyHtml += `<div>${result.content}</div>`;
+    }
+
+    if (result.sections && result.sections.length > 0) {
+      result.sections.forEach(sec => {
+        bodyHtml += `
+          <div class="section-block">
+            <h5>${sec.heading}</h5>
+            <div>${sec.content}</div>
+          </div>
+        `;
+      });
+    }
+
+    // If query returned a list of multiple matching crops
+    if (result.crops && result.crops.length > 0) {
+      bodyHtml += `<div class="suggestions-row" style="margin-top:0.85rem;">`;
+      result.crops.forEach(c => {
+        bodyHtml += `<button class="chip-btn" data-ask="Tell me about ${c.name}">${c.icon} ${c.name}</button>`;
+      });
+      bodyHtml += `</div>`;
+    }
+
+    // Follow-up Suggestion Chips
+    if (result.suggestions && result.suggestions.length > 0) {
+      bodyHtml += `<div class="suggestions-row">`;
+      result.suggestions.forEach(s => {
+        bodyHtml += `<button class="chip-btn" data-ask="${s}">💡 ${s}</button>`;
+      });
+      bodyHtml += `</div>`;
+    }
+
+    bodyHtml += `</div>`;
+    botMsg.innerHTML = bodyHtml;
+
+    chatMessagesContainer.appendChild(botMsg);
+    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
+    // Bind click events on chips inside response
+    botMsg.querySelectorAll(".chip-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const ask = btn.getAttribute("data-ask");
+        chatInput.value = ask;
+        chatForm.dispatchEvent(new Event("submit"));
+      });
+    });
+  }
+
+  // 3. WEATHER & CLIMATE-BASED RECOMMENDATION
+  async function updateWeatherAndRecommendations(locationQuery) {
+    const soilType = soilSelectFilter.value;
+    
+    // Show loading indicator
+    document.getElementById("weather-condition-text").textContent = "Fetching weather report...";
+    
+    const result = await weatherService.fetchWeather(locationQuery);
+    const w = result.weather;
+
+    // Update UI Elements
+    document.getElementById("weather-temp-val").textContent = w.temperature;
+    document.getElementById("weather-icon-symbol").textContent = w.icon || "⛅";
+    document.getElementById("weather-condition-text").textContent = w.conditionText;
+    document.getElementById("weather-location-text").textContent = `📍 ${w.locationName}`;
+    document.getElementById("weather-humidity-val").textContent = `${w.humidity}%`;
+    document.getElementById("weather-rain-val").textContent = `${w.precipitation} mm`;
+    document.getElementById("weather-wind-val").textContent = `${w.windSpeed} km/h`;
+    document.getElementById("weather-minmax-val").textContent = `${w.dailyMin}°C / ${w.dailyMax}°C`;
+
+    // Calculate crop recommendations
+    renderRecommendations(soilType);
+  }
+
+  function renderRecommendations(selectedSoil) {
+    const evaluated = weatherService.evaluateCropsForClimateAndLand(selectedSoil);
+    
+    let html = "";
+    evaluated.forEach(item => {
+      const crop = item.crop;
+      html += `
+        <div class="crop-rec-card">
+          <div class="rec-top-row">
+            <div class="rec-crop-identity">
+              <span class="rec-crop-icon">${crop.icon}</span>
+              <div>
+                <h4>${crop.name}</h4>
+                <span>${crop.scientific_name} • ${crop.category}</span>
+              </div>
+            </div>
+            <div class="rec-score-box">
+              <div class="status-badge-text">${item.recommendation}</div>
+              <div class="score-badge ${item.statusColor}">${item.score}% Match</div>
+            </div>
+          </div>
+          <div class="rec-reason-text">
+            <strong>Suitability Analysis:</strong> ${item.reason}
+          </div>
+          <div class="rec-metrics-breakdown">
+            <span>🌡️ Temperature Match: <strong>${item.tempScore}%</strong></span>
+            <span>💧 Moisture Fitness: <strong>${item.rainScore}%</strong></span>
+            <span>🏞️ Soil Affinity: <strong>${item.soilScore}%</strong></span>
+            <span>⏱️ Season: <strong>${item.seasons.join(", ")}</strong></span>
+            <span>🌾 Expected Yield: <strong>${crop.expected_yield}</strong></span>
+          </div>
+          <button class="btn-view-rec-dossier" data-crop-id="${crop.id}">
+            📖 View Complete ${crop.name} Cultivation Dossier →
+          </button>
+        </div>
+      `;
+    });
+
+    rankedCropsContainer.innerHTML = html;
+
+    // Bind View Dossier buttons in recommendation list
+    rankedCropsContainer.querySelectorAll(".btn-view-rec-dossier").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const cropId = btn.getAttribute("data-crop-id");
+        handleOpenFile({ type: "crop", cropId: cropId });
+      });
+    });
+  }
+
+  // Location search button click
+  btnWeatherSearch.addEventListener("click", () => {
+    const query = weatherSearchInput.value.trim();
+    if (query) updateWeatherAndRecommendations(query);
+  });
+
+  weatherSearchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      const query = weatherSearchInput.value.trim();
+      if (query) updateWeatherAndRecommendations(query);
+    }
+  });
+
+  // Quick Location Pills
+  quickLocPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      const loc = pill.getAttribute("data-loc");
+      const defaultSoil = pill.getAttribute("data-soil");
+      weatherSearchInput.value = loc;
+      if (defaultSoil) {
+        soilSelectFilter.value = defaultSoil;
+      }
+      updateWeatherAndRecommendations(loc);
+    });
+  });
+
+  // Soil filter change
+  soilSelectFilter.addEventListener("change", () => {
+    renderRecommendations(soilSelectFilter.value);
+  });
+
+  // Initial load with default preset location
+  updateWeatherAndRecommendations("Ludhiana (Punjab)");
+
+  // 4. DOSSIER & FILE MODAL HANDLER
+  function handleOpenFile(fileMeta) {
+    if (fileMeta.type === "crop") {
+      const crop = CROPS_DATABASE.find(c => c.id === fileMeta.cropId);
+      if (!crop) return;
+
+      currentModalCrop = crop;
+      modalDocTitle.innerHTML = `${crop.icon} ${crop.name} — Comprehensive Agricultural Dossier`;
+      
+      let content = `
+        <div class="markdown-rendered-view">
+          <p><strong>Botanical Taxonomy:</strong> <em>${crop.scientific_name}</em> | <strong>Category:</strong> ${crop.category}</p>
+          <p>${crop.summary}</p>
+          
+          <h2>1. Land & Soil Suitability</h2>
+          <ul>
+            <li><strong>Preferred Soils:</strong> ${crop.land_soil_suitability.soil_types.join(", ")}</li>
+            <li><strong>Optimal pH Range:</strong> ${crop.land_soil_suitability.ideal_ph}</li>
+            <li><strong>Drainage Requirement:</strong> ${crop.land_soil_suitability.drainage}</li>
+            <li><strong>Land Preparation:</strong> ${crop.land_soil_suitability.land_prep}</li>
+          </ul>
+
+          <h2>2. How to Grow & Crop Protocol</h2>
+          <ul>
+            <li><strong>Sowing Season & Time:</strong> ${crop.how_to_grow.sowing_time} (${crop.climate_requirements.seasons.join(", ")})</li>
+            <li><strong>Seed Rate:</strong> ${crop.how_to_grow.seed_rate}</li>
+            <li><strong>Row & Plant Spacing:</strong> ${crop.how_to_grow.spacing}</li>
+            <li><strong>Nursery Protocol:</strong> ${crop.how_to_grow.nursery_prep}</li>
+            <li><strong>Irrigation Schedule:</strong> ${crop.how_to_grow.irrigation_stages}</li>
+            <li><strong>Growth Duration:</strong> ${crop.how_to_grow.growth_cycle_days}</li>
+            <li><strong>Harvest Indicators:</strong> ${crop.how_to_grow.harvesting_signs}</li>
+          </ul>
+
+          <h2>3. Fertilization & Nutrient Schedule</h2>
+          <div class="npk-box" style="margin-bottom:1rem;">
+            <strong>Target NPK Ratio:</strong> ${crop.fertilization.npk_ratio}
+          </div>
+          <ul>
+            <li><strong>Basal Application:</strong> ${crop.fertilization.basal_dose}</li>
+            <li><strong>Top Dressing:</strong> ${crop.fertilization.top_dressing}</li>
+            <li><strong>Organic Manures:</strong> ${crop.fertilization.organic_options}</li>
+            <li><strong>Micronutrient Management:</strong> ${crop.fertilization.micronutrients}</li>
+          </ul>
+
+          <h2>4. Crop Balancing & Health Management</h2>
+          <ul>
+            <li><strong>Soil Health & Amendments:</strong> ${crop.crop_balancing.soil_amendments}</li>
+            <li><strong>Nutrient Deficiency Diagnostic:</strong> ${crop.crop_balancing.nutrient_deficiency_cures}</li>
+            <li><strong>Integrated Pest & Disease Balancing:</strong> ${crop.crop_balancing.pest_disease_management}</li>
+            <li><strong>Companion Crops:</strong> ${crop.crop_balancing.companion_plants.join(", ")}</li>
+            <li><strong>Crop Rotation:</strong> ${crop.crop_balancing.crop_rotation}</li>
+          </ul>
+
+          <h2>5. Economics & Yield</h2>
+          <p><strong>Expected Commercial Yield:</strong> <span class="badge-yield">${crop.expected_yield}</span></p>
+        </div>
+      `;
+
+      modalDocContent.innerHTML = content;
+      btnAskAboutThisCrop.style.display = "inline-block";
+      btnAskAboutThisCrop.textContent = `Ask AI Assistant About ${crop.name} →`;
+      fileModalOverlay.classList.add("active");
+
+    } else if (fileMeta.type === "doc") {
+      // Embedded text/markdown guides
+      modalDocTitle.innerHTML = `📄 ${fileMeta.id.replace(/_/g, ' ').toUpperCase()}`;
+      btnAskAboutThisCrop.style.display = "none";
+
+      const guideTexts = {
+        "rice_guide_md": getRiceGuideMarkdown(),
+        "wheat_guide_md": getWheatGuideMarkdown(),
+        "tomato_guide_md": getTomatoGuideMarkdown(),
+        "soil_npk_md": getSoilNpkMarkdown()
+      };
+
+      const mdContent = guideTexts[fileMeta.id] || `<p>Document path: ${fileMeta.path}</p>`;
+      modalDocContent.innerHTML = `<div class="markdown-rendered-view">${mdContent}</div>`;
+      fileModalOverlay.classList.add("active");
+    }
+  }
+
+  // Close modal
+  function closeModal() {
+    fileModalOverlay.classList.remove("active");
+    currentModalCrop = null;
+  }
+
+  btnCloseModal.addEventListener("click", closeModal);
+  btnModalCloseAction.addEventListener("click", closeModal);
+  fileModalOverlay.addEventListener("click", (e) => {
+    if (e.target === fileModalOverlay) closeModal();
+  });
+
+  // Switch to advisory chat when clicking "Ask AI Assistant About this crop"
+  btnAskAboutThisCrop.addEventListener("click", () => {
+    if (currentModalCrop) {
+      closeModal();
+      // Switch to Chat tab
+      tabButtons[0].click();
+      chatInput.value = `Tell me how to grow and fertilize ${currentModalCrop.name}`;
+      chatForm.dispatchEvent(new Event("submit"));
+    }
+  });
+
+  // Side panel category shortcuts
+  document.querySelectorAll(".mini-category-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const folderId = btn.getAttribute("data-folder");
+      // Switch to vault tab and open that folder
+      tabButtons[1].click();
+      folderExplorer.openFolder(folderId, foldersContainer);
+    });
+  });
+
+  function escapeHtml(string) {
+    const entityMap = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    };
+    return String(string).replace(/[&<>"']/g, s => entityMap[s]);
+  }
+
+  // Pre-compiled Markdown guides for instant modal rendering
+  function getRiceGuideMarkdown() {
+    return `
+      <h1>🌾 Rice (Paddy) Cultivation Dossier</h1>
+      <h2>1. Land & Soil Suitability</h2>
+      <p>• <strong>Optimal Soil Type:</strong> Heavy clayey loams and alluvial silty soils capable of retaining surface water.<br>
+      • <strong>Ideal pH Range:</strong> 5.5 to 6.8 (tolerant to slightly acidic conditions).<br>
+      • <strong>Land Preparation:</strong> Deep summer plowing followed by 2-3 passes of wet puddling to form an impermeable layer (plow sole) at 15-20 cm depth to minimize percolation loss.</p>
+      <h2>2. Sowing & Nursery</h2>
+      <p>• <strong>Nursery Methods:</strong> Wet bed or Modified Mat Nursery (SRI technique).<br>
+      • <strong>Seed Treatment:</strong> Soak seeds in brine solution (10%) to remove unfilled seeds; treat with Carbendazim (2g/kg) and Azospirillum (600g/ha).<br>
+      • <strong>Transplanting:</strong> Transplant 21-25 day old seedlings at 2-3 seedlings per hill, spaced 20cm x 15cm.</p>
+      <h2>3. Fertilization & Nutrient Schedule</h2>
+      <p>• <strong>Standard NPK Dosage:</strong> 120 kg N : 60 kg P2O5 : 40 kg K2O per hectare.<br>
+      • <strong>Basal Application:</strong> 100% Phosphorus, 50% Potassium, and 25% Nitrogen applied at final puddling.<br>
+      • <strong>Top Dressing:</strong> 50% Nitrogen at 21-25 days (tillering); remaining 25% N and 50% K at panicle initiation (45-50 days).<br>
+      • <strong>Micronutrient:</strong> 25 kg Zinc Sulfate (ZnSO4) basal prevents Khaira disease.</p>
+      <h2>4. Water Management & Balancing</h2>
+      <p>Keep 2-3 cm water layer for first 10 days post transplanting. Alternate wetting and drying (AWD) can save 25-30% irrigation water without reducing yield. Drain 10 days before harvest.</p>
+    `;
+  }
+
+  function getWheatGuideMarkdown() {
+    return `
+      <h1>🌾 Wheat Field Management & Nutrition Dossier</h1>
+      <h2>1. Land & Soil Suitability</h2>
+      <p>• <strong>Optimal Soil:</strong> Well-drained fertile loam, clay loam, and alluvial soils.<br>
+      • <strong>Ideal pH:</strong> 6.0 to 7.5.<br>
+      • <strong>Drainage:</strong> Highly critical; wheat roots suffocate in standing water within 24-48 hours.</p>
+      <h2>2. Critical Irrigation Stages</h2>
+      <p>1. <strong>Crown Root Initiation (CRI):</strong> 20-25 days after sowing - MOST CRITICAL irrigation.<br>
+      2. <strong>Tillering:</strong> 40-45 days.<br>
+      3. <strong>Jointing:</strong> 60-65 days.<br>
+      4. <strong>Flowering / Anthesis:</strong> 80-85 days.<br>
+      5. <strong>Milking & Dough:</strong> 100-115 days.</p>
+      <h2>3. Fertilizer Formulation</h2>
+      <p>120 N : 60 P2O5 : 40 K2O (kg/ha). Full P & K with 1/2 N at sowing. Top dress 1/4th N at CRI with first irrigation, and 1/4th N at tillering with second irrigation.</p>
+    `;
+  }
+
+  function getTomatoGuideMarkdown() {
+    return `
+      <h1>🍅 Tomato Production & Health Balancing Masterclass</h1>
+      <h2>1. Land & Soil Suitability</h2>
+      <p>• <strong>Optimal Soil:</strong> Sandy loam rich in organic matter, red loam with deep topsoil.<br>
+      • <strong>Ideal pH Range:</strong> 6.0 to 6.8.<br>
+      • <strong>Drainage:</strong> Excellent drainage required. Use 15-20 cm raised beds to avoid root rot.</p>
+      <h2>2. Growth Protocol</h2>
+      <p>• <strong>Nursery:</strong> 25-30 days on seedling plug trays with coco-peat + vermicompost.<br>
+      • <strong>Spacing:</strong> 60 cm between rows, 45 cm between plants for bush types; 90cm x 60cm for staked varieties.<br>
+      • <strong>Staking:</strong> Staking with bamboo stakes or trellis wire improves yield by 40% and prevents soil-borne diseases.</p>
+      <h2>3. Nutrient Schedule & Fertigation</h2>
+      <p>180 N : 100 P2O5 : 150 K2O kg/ha. Calcium Nitrate (10-15 kg/ha) prevents Blossom End Rot. Spray 1 g/L Borax at flower initiation to prevent flower drop.</p>
+    `;
+  }
+
+  function getSoilNpkMarkdown() {
+    return `
+      <h1>🧪 Soil Balancing, pH Correction & NPK Nutrition Guide</h1>
+      <h2>1. Soil pH Diagnostics and Rebalancing</h2>
+      <table>
+        <tr><th>Soil pH</th><th>Condition</th><th>Correction Method</th></tr>
+        <tr><td><strong>&lt; 5.5</strong></td><td>Strongly Acidic</td><td>Apply Agricultural Limestone (CaCO3) at 1.5 - 3.0 t/ha</td></tr>
+        <tr><td><strong>6.0 - 7.2</strong></td><td>Ideal / Neutral</td><td>Optimal nutrient uptake; maintain with organic compost</td></tr>
+        <tr><td><strong>&gt; 7.8</strong></td><td>Alkaline / Sodic</td><td>Apply Gypsum (CaSO4) + elemental sulfur (200-400 kg/ha)</td></tr>
+      </table>
+      <h2>2. NPK Nutrient Functions</h2>
+      <p>• <strong>Nitrogen (N):</strong> Vegetative growth and leaf vigor. Pale yellow leaves indicate deficiency.<br>
+      • <strong>Phosphorus (P):</strong> Root architecture and flowering. Dark purplish foliage indicates deficiency.<br>
+      • <strong>Potassium (K):</strong> Disease resistance and fruit sizing. Brown marginal scorch indicates deficiency.</p>
+    `;
+  }
+});
+
+</script>
   
   <!-- Soil Rebalancer Interactive Logic -->
   <script>
