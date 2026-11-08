@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriCrops Pro — Smart Agricultural Intelligence & Crop Advisory System</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="app-navbar">
+    <div class="navbar-container">
+      <div class="brand-wrapper">
+        <div class="brand-icon-bubble">🌾</div>
+        <div>
+          <h1 class="brand-title">AgriCrops <span>Pro</span></h1>
+          <p class="brand-tagline">Intelligent Crop Q&A, Cultivation Protocols, Weather & Land Suitability</p>
+        </div>
+      </div>
+
+      <nav class="nav-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="advisory-tab" role="tab">
+          <span>💬</span> Agro AI Advisor
+        </button>
+        <button class="tab-btn" data-tab="vault-tab" role="tab">
+          <span>🗂️</span> Knowledge Folders
+        </button>
+        <button class="tab-btn" data-tab="weather-tab" role="tab">
+          <span>🌦️</span> Weather & Land Matcher
+        </button>
+        <button class="tab-btn" data-tab="rebalancer-tab" role="tab">
+          <span>⚖️</span> Soil Rebalancer
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="main-wrapper">
+
+    <!-- Quick Status Strip -->
+    <div class="quick-status-strip">
+      <div class="strip-item">
+        <span class="strip-icon">🌱</span>
+        <div class="strip-text">
+          <strong>Agro-Intelligence Active</strong>
+          <span>Ready to answer: How to grow, fertilize, land suitability & crop balancing</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">📂</span>
+        <div class="strip-text">
+          <strong>7 Knowledge Vault Folders</strong>
+          <span>Click any folder to open dossiers & guides</span>
+        </div>
+      </div>
+      <div class="strip-item">
+        <span class="strip-icon">⛅</span>
+        <div class="strip-text">
+          <strong id="strip-weather-status">Live Weather Engine</strong>
+          <span>Real-time climate matching for land & crops</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 1: ADVISORY & Q&A -->
+    <section id="advisory-tab" class="tab-content active" role="tabpanel">
+      <div class="advisory-layout">
+        
+        <!-- Left: Chat Card -->
+        <div class="chat-card">
+          <div class="chat-header">
+            <div class="chat-title">
+              <h3>🌾 Agricultural Advisory & Crop Q&A Assistant</h3>
+              <p>Ask anything: "How to grow Rice?", "Best fertilizer for Wheat", "Which land suits Cotton", or "How to balance Tomato nutrients?"</p>
+            </div>
+            <div class="live-indicator">
+              <span class="live-dot"></span> Online Advisor
+            </div>
+          </div>
+
+          <!-- Messages Stream -->
+          <div class="chat-messages" id="chat-messages">
+            <!-- Bot Greeting Message -->
+            <div class="msg-bubble msg-bot">
+              <div class="avatar avatar-bot">🌾</div>
+              <div class="msg-body">
+                <div class="response-title">Welcome to AgriCrops Advisory! 🧑‍🌾</div>
+                <p>I am your smart agricultural advisor. Ask me questions about any crop, and I will give you detailed scientific recommendations on:</p>
+                
+                <div class="section-block">
+                  <h5>🌱 1. How to Grow & Cultivate</h5>
+                  <p>Sowing times, nursery management, seed rates, plant spacing, critical irrigation cycles, and harvesting signs.</p>
+                </div>
+
+                <div class="section-block">
+                  <h5>🧪 2. Fertilization & Nutrition</h5>
+                  <p>Target NPK ratios, basal doses at planting, top dressing schedules, organic manures, and micronutrient sprays.</p>
+                </div>
+
+                <div class="section-block">
+                  <h5>🏞️ 3. Land & Soil Suitability</h5>
+                  <p>Which soils suit each crop best (Clay loam, Alluvial, Black soil, Sandy loam), optimal pH range, drainage, and tillage.</p>
+                </div>
+
+                <div class="section-block">
+                  <h5>⚖️ 4. Crop Balancing & Protection</h5>
+                  <p>Soil pH amendments, deficiency cures (Zinc, Iron, Calcium), integrated pest management, and companion crop rotations.</p>
+                </div>
+
+                <div class="suggestions-row">
+                  <button class="chip-btn" data-ask="How to grow Rice?">🌱 How to grow Rice?</button>
+                  <button class="chip-btn" data-ask="What fertilizer is best for Wheat?">🧪 Fertilizer for Wheat</button>
+                  <button class="chip-btn" data-ask="Which land suits Cotton?">🏞️ Which land suits Cotton?</button>
+                  <button class="chip-btn" data-ask="How to balance Tomato nutrients and pests?">⚖️ Balance Tomato crops</button>
+                  <button class="chip-btn" data-ask="Tell me about Sugarcane">🎋 Sugarcane Guide</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chat Input -->
+          <div class="chat-input-area">
+            <div class="quick-prompts-bar">
+              <span class="quick-prompt-pill" data-prompt="How to grow Rice?">🌱 How to grow Rice?</span>
+              <span class="quick-prompt-pill" data-prompt="What fertilizer is best for Wheat?">🧪 Fertilizer for Wheat</span>
+              <span class="quick-prompt-pill" data-prompt="Which land suits Cotton?">🏞️ Which land suits Cotton?</span>
+              <span class="quick-prompt-pill" data-prompt="How to balance nutrients for Potato?">⚖️ Balance Potato crops</span>
+              <span class="quick-prompt-pill" data-prompt="How to grow Maize?">🌽 Cultivate Maize</span>
+              <span class="quick-prompt-pill" data-prompt="Which land suits Chickpea?">🧆 Chickpea land suitability</span>
+              <span class="quick-prompt-pill" data-prompt="Best fertilizer for Tomato">🍅 Tomato NPK ratio</span>
+            </div>
+
+            <form class="input-form" id="chat-form">
+              <input type="text" class="chat-input" id="chat-input" placeholder="Type your crop question here (e.g., 'How to grow Tomato?', 'Fertilizer for Rice', 'Which land suits Maize?')..." autocomplete="off" required>
+              <button type="submit" class="btn-send">
+                <span>Send</span> <span>➤</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Side Quick Reference Card -->
+        <aside class="side-panel">
+          <div class="side-card">
+            <h4>🗂️ Browse Crop Folders</h4>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:0.75rem;">
+              Click any category to open its folder in the Knowledge Vault:
+            </p>
+            <div class="category-mini-list">
+              <button class="mini-category-btn" data-folder="Cereals_and_Grains">
+                <span>🌾 Cereals & Grains</span> <span>→</span>
+              </button>
+              <button class="mini-category-btn" data-folder="Pulses_and_Legumes">
+                <span>🧆 Pulses & Legumes</span> <span>→</span>
+              </button>
+              <button class="mini-category-btn" data-folder="Cash_Crops_and_Fibers">
+                <span>🧶 Cash Crops & Fibers</span> <span>→</span>
+              </button>
+              <button class="mini-category-btn" data-folder="Vegetables_and_Greens">
+                <span>🍅 Vegetables & Greens</span> <span>→</span>
+              </button>
+              <button class="mini-category-btn" data-folder="Fruits_and_Orchards">
+                <span>🥭 Fruits & Orchards</span> <span>→</span>
+              </button>
+              <button class="mini-category-btn" data-folder="Spices_and_Plantation">
+                <span>🫚 Spices & Plantation</span> <span>→</span>
+              </button>
+              <button class="mini-category-btn" data-folder="Soil_and_Fertilizers">
+                <span>🧪 Soil & Fertilizers Vault</span> <span>→</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="side-card">
+            <h4>💡 Quick Agronomy Tips</h4>
+            <ul style="font-size:0.84rem; color:#475569; padding-left:1.2rem; line-height:1.6;">
+              <li><strong>Always test soil pH</strong> before planting: optimal range for most crops is 6.0 to 7.2.</li>
+              <li><strong>Split Nitrogen:</strong> Avoid dumping all nitrogen as basal; apply in 2-3 splits at active vegetative stages.</li>
+              <li><strong>Basal Phosphorus:</strong> Apply 100% Phosphorus at sowing near the root zone for vigorous root architecture.</li>
+              <li><strong>Water management:</strong> Drain standing water 10-15 days prior to grain harvest.</li>
+            </ul>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- TAB 2: KNOWLEDGE VAULT & FOLDER EXPLORER -->
+    <section id="vault-tab" class="tab-content" role="tabpanel">
+      <!-- Container for dynamic Folder Explorer component -->
+      <div id="folders-container"></div>
+    </section>
+
+    <!-- TAB 3: CLIMATE & WEATHER MATCHING -->
+    <section id="weather-tab" class="tab-content" role="tabpanel">
+      <div class="weather-layout">
+        
+        <!-- Left: Weather Station & Location Controller -->
+        <div class="weather-station-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3 style="font-size:1.15rem; font-weight:700;">🌦️ Live Weather Station</h3>
+            <span style="font-size:0.75rem; background:rgba(255,255,255,0.2); padding:3px 8px; border-radius:10px;">Free Global API</span>
+          </div>
+
+          <!-- Location Search -->
+          <div class="weather-search-box">
+            <input type="text" id="weather-search-input" class="weather-search-input" placeholder="Enter city name (e.g. Punjab, Delhi, Nairobi, Fresno)...">
+            <button class="btn-weather-search" id="btn-weather-search">Search</button>
+          </div>
+
+          <!-- Preset Locations -->
+          <div>
+            <span style="font-size:0.76rem; color:#bae6fd; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.4rem;">Quick Presets:</span>
+            <div class="quick-locations-list">
+              <span class="quick-loc-pill" data-loc="Ludhiana (Punjab)" data-soil="Alluvial Loam">Ludhiana (Punjab)</span>
+              <span class="quick-loc-pill" data-loc="Nagpur" data-soil="Deep Black Soil (Vertisols)">Nagpur (Black Soil)</span>
+              <span class="quick-loc-pill" data-loc="Bengaluru" data-soil="Red Soil">Bengaluru (Red Soil)</span>
+              <span class="quick-loc-pill" data-loc="Fresno" data-soil="Sandy Loam">California (Central Valley)</span>
+              <span class="quick-loc-pill" data-loc="Nairobi" data-soil="Clayey Loam">Nairobi (Rift Valley)</span>
+            </div>
+          </div>
+
+          <!-- Main Temperature Display -->
+          <div class="weather-main-display">
+            <div>
+              <div class="temp-large"><span id="weather-temp-val">25</span><span>°C</span></div>
+              <div class="weather-condition-label" id="weather-condition-text">Clear & Sunny</div>
+              <div class="weather-location-label" id="weather-location-text">📍 Ludhiana (Punjab), India</div>
+            </div>
+            <div class="weather-icon-large" id="weather-icon-symbol">☀️</div>
+          </div>
+
+          <!-- Weather Metrics Grid -->
+          <div class="weather-metrics-grid">
+            <div class="metric-item">
+              <span class="metric-label">💧 Humidity</span>
+              <span class="metric-value" id="weather-humidity-val">60%</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">🌧️ Rainfall Rate</span>
+              <span class="metric-value" id="weather-rain-val">65 mm</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">💨 Wind Speed</span>
+              <span class="metric-value" id="weather-wind-val">12 km/h</span>
+            </div>
+            <div class="metric-item">
+              <span class="metric-label">🌡️ Daily Range</span>
+              <span class="metric-value" id="weather-minmax-val">18°C / 29°C</span>
+            </div>
+          </div>
+
+          <!-- Soil Type Selector -->
+          <div class="soil-filter-card">
+            <h4>🏞️ Select Your Land / Soil Type</h4>
+            <p style="font-size:0.8rem; color:#64748b; margin-bottom:0.5rem;">The system matches crops against both the weather AND your chosen land type:</p>
+            <select id="soil-select-filter" class="soil-select">
+              <option value="Alluvial Loam" selected>Alluvial Loam (River plain, balanced, high fertility)</option>
+              <option value="Clayey Loam">Clayey Loam (High water retention, nutrient dense)</option>
+              <option value="Deep Black Soil (Vertisols)">Deep Black Soil (Regur / Cotton soil, moisture holding)</option>
+              <option value="Sandy Loam">Sandy Loam (Fast draining, aerated, warm)</option>
+              <option value="Red Soil">Red Soil (Iron-rich, permeable, rapid drainage)</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- Right: Ranked Crop Recommendations -->
+        <div class="recommendations-panel">
+          <div class="recommendations-header">
+            <div>
+              <h3>🌾 Climate & Land Crop Suitability Ranking</h3>
+              <p>Real-time calculation combining current temperature, moisture, and your soil texture.</p>
+            </div>
+          </div>
+
+          <div class="ranked-crops-list" id="ranked-crops-container">
+            <!-- Dynamically populated by WeatherService -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 4: SOIL REBALANCER & HEALTH MATRIX -->
+    <section id="rebalancer-tab" class="tab-content" role="tabpanel">
+      <div class="explorer-card" style="padding: 2rem;">
+        <div class="explorer-title" style="margin-bottom: 1.5rem;">
+          <span class="folder-header-icon">⚖️</span>
+          <div>
+            <h3>Soil Diagnostic, Balancing & Crop Recommendation Matrix</h3>
+            <p class="subtitle">Enter your land parameters to calculate exact pH adjustments, NPK deficiency cures, and suitable crops.</p>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.75rem;">
+          
+          <!-- Inputs Card -->
+          <div class="side-card">
+            <h4>🧪 Soil Test Parameters</h4>
+            
+            <div style="margin-bottom:1.25rem;">
+              <label style="display:block; font-size:0.88rem; font-weight:600; margin-bottom:0.35rem;">Soil pH Level: <span id="lbl-ph-val" style="color:var(--primary); font-weight:700;">6.5 (Neutral)</span></label>
+              <input type="range" id="input-ph-range" min="4.0" max="9.0" step="0.1" value="6.5" style="width:100%; accent-color:var(--primary);">
+              <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:#64748b; margin-top:2px;">
+                <span>4.0 (Strongly Acidic)</span>
+                <span>6.5 (Optimal)</span>
+                <span>9.0 (Strongly Alkaline)</span>
+              </div>
+            </div>
+
+            <div style="margin-bottom:1.25rem;">
+              <label style="display:block; font-size:0.88rem; font-weight:600; margin-bottom:0.35rem;">Soil Texture / Land Type</label>
+              <select id="rebalancer-soil-type" class="soil-select">
+                <option value="Clayey Loam">Clayey Loam (Heavy, slow draining)</option>
+                <option value="Alluvial Loam" selected>Alluvial Loam (Balanced, fertile)</option>
+                <option value="Deep Black Soil (Vertisols)">Deep Black Soil (Shrink-swell, vertisol)</option>
+                <option value="Sandy Loam">Sandy Loam (Light, rapid drainage)</option>
+                <option value="Red Soil">Red Soil (Gravelly, high iron)</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom:1.25rem;">
+              <label style="display:block; font-size:0.88rem; font-weight:600; margin-bottom:0.35rem;">Primary Soil Issue / Deficiency</label>
+              <select id="rebalancer-deficiency" class="soil-select">
+                <option value="none">None / Balanced Soil</option>
+                <option value="nitrogen">Nitrogen Deficit (Pale yellow foliage)</option>
+                <option value="phosphorus">Phosphorus Deficit (Purplish leaves, poor roots)</option>
+                <option value="potassium">Potassium Deficit (Burned leaf edges, weak stems)</option>
+                <option value="zinc">Zinc Deficit (Khaira / rusty spots)</option>
+                <option value="calcium">Calcium Deficit (Blossom end rot in tomato/fruit)</option>
+              </select>
+            </div>
+
+            <button class="btn-primary" id="btn-run-rebalance" style="width:100%; padding:0.75rem; border-radius:var(--radius-sm); font-weight:600; cursor:pointer;">
+              ⚡ Calculate Soil Rebalancing Formula
+            </button>
+          </div>
+
+          <!-- Output Diagnostic Card -->
+          <div class="side-card" id="rebalancer-results-card">
+            <h4>📋 Agronomic Prescription & Rebalancing</h4>
+            <div id="rebalance-output-content">
+              <div class="section-block">
+                <h5>Soil pH Diagnosis: Neutral & Balanced (pH 6.5)</h5>
+                <p>Optimal bioavailability for Nitrogen, Phosphorus, Potassium, Calcium, and trace micronutrients. No chemical lime or gypsum required.</p>
+              </div>
+
+              <div class="section-block">
+                <h5>Recommended Amendment Schedule</h5>
+                <p>Maintain soil health with 10 tonnes/ha well-decomposed Farm Yard Manure (FYM) or 2.5 tonnes/ha Vermicompost. Inoculate seeds with Azotobacter/Rhizobium and PSB bio-fertilizers.</p>
+              </div>
+
+              <div class="section-block">
+                <h5>Ideal Crops for This Profile</h5>
+                <p><strong>Top Matches:</strong> Wheat, Maize, Tomato, Potato, Sugarcane, Chickpea, Banana.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FILE & DOSSIER MODAL DIALOG -->
+  <div class="modal-overlay" id="file-modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modal-doc-title">Document Title</h3>
+        <button class="btn-close-modal" id="btn-close-modal" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-content-area" id="modal-doc-content">
+        <!-- Dynamic Markdown / Crop content -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-modal-action btn-secondary" id="btn-modal-close-action">Close</button>
+        <button class="btn-modal-action btn-primary" id="btn-ask-about-crop">Ask AI Assistant About this Crop →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/crops_data.js"></script>
+  <script src="js/advisory_engine.js"></script>
+  <script src="js/weather_service.js"></script>
+  <script src="js/folder_explorer.js"></script>
+  <script src="js/app.js"></script>
+  
+  <!-- Soil Rebalancer Interactive Logic -->
+  <script>
+    const phRange = document.getElementById("input-ph-range");
+    const lblPh = document.getElementById("lbl-ph-val");
+    const soilTypeSelect = document.getElementById("rebalancer-soil-type");
+    const deficiencySelect = document.getElementById("rebalancer-deficiency");
+    const btnRunRebalance = document.getElementById("btn-run-rebalance");
+    const resultsContainer = document.getElementById("rebalance-output-content");
+
+    phRange.addEventListener("input", () => {
+      const val = parseFloat(phRange.value);
+      let desc = "Optimal";
+      if (val < 5.5) desc = "Strongly Acidic";
+      else if (val < 6.2) desc = "Moderately Acidic";
+      else if (val <= 7.3) desc = "Neutral / Ideal";
+      else if (val <= 8.2) desc = "Alkaline / Calcareous";
+      else desc = "Strongly Alkaline / Sodic";
+      lblPh.textContent = `${val.toFixed(1)} (${desc})`;
+    });
+
+    btnRunRebalance.addEventListener("click", () => {
+      const ph = parseFloat(phRange.value);
+      const soil = soilTypeSelect.value;
+      const def = deficiencySelect.value;
+
+      let phDiagnosis = "";
+      let amendment = "";
+      let cropList = "";
+
+      // 1. pH evaluation
+      if (ph < 5.8) {
+        phDiagnosis = `<h5>⚠️ Strongly Acidic Soil (pH ${ph.toFixed(1)})</h5>
+          <p>Aluminum and manganese toxicity risk. Phosphorus gets locked into insoluble iron-aluminum phosphates. Beneficial nitrogen-fixing bacteria activity is stunted.</p>`;
+        amendment = `<h5>Correction Formula:</h5>
+          <p>Apply <strong>Agricultural Limestone (CaCO3)</strong> or <strong>Dolomite</strong> at <strong>2.0 - 2.5 tonnes/hectare</strong> 3 weeks before sowing. Add 10 tonnes Farmyard Manure to buffer acidity.</p>`;
+        cropList = `Rice (Paddy), Tea, Potato (tolerates 5.2-6.5), Turmeric, Pineapple.`;
+      } else if (ph > 7.8) {
+        phDiagnosis = `<h5>⚠️ Alkaline / Calcareous Soil (pH ${ph.toFixed(1)})</h5>
+          <p>Iron (Fe), Zinc (Zn), Boron, and Phosphorus deficiencies are severe. Soil may suffer from dispersion and low water permeability.</p>`;
+        amendment = `<h5>Correction Formula:</h5>
+          <p>Apply <strong>Agricultural Gypsum (CaSO4)</strong> at <strong>2.5 - 3.5 tonnes/ha</strong> followed by leaching. Incorporate <strong>Elemental Sulfur (250 kg/ha)</strong> and grow green manure (Sesbania) to generate carbonic acid.</p>`;
+        cropList = `Cotton, Barley, Sorghum, Chickpea, Wheat, Mustard.`;
+      } else {
+        phDiagnosis = `<h5>✅ Balanced & Fertile Soil (pH ${ph.toFixed(1)})</h5>
+          <p>Ideal nutrient uptake efficiency for all major macronutrients (N, P, K) and micronutrients. High microbial diversity.</p>`;
+        amendment = `<h5>Maintenance Formula:</h5>
+          <p>Apply 10-12 tonnes/ha compost or 2.5 t/ha vermicompost + biofertilizers (Azospirillum & Phosphobacteria). Practice crop rotation with legumes.</p>`;
+        cropList = `Wheat, Tomato, Rice, Maize, Sugarcane, Banana, Onion, Potato.`;
+      }
+
+      // 2. Deficiency amendment
+      let defHtml = "";
+      switch (def) {
+        case "nitrogen":
+          defHtml = `<div class="section-block" style="border-left-color:#3b82f6;">
+            <h5>Nitrogen Recovery Plan:</h5>
+            <p>Apply Urea (46% N) split into 2-3 top dressings. For organic remediation, apply Neem cake (500 kg/ha) or cultivate Sunnhemp green manure.</p>
+          </div>`;
+          break;
+        case "phosphorus":
+          defHtml = `<div class="section-block" style="border-left-color:#f59e0b;">
+            <h5>Phosphorus Recovery Plan:</h5>
+            <p>Apply Single Super Phosphate (SSP - 16% P2O5) or DAP (18:46:0) placed 5 cm deep in seed furrow. Inoculate with PSB (Phosphorus Solubilizing Bacteria).</p>
+          </div>`;
+          break;
+        case "potassium":
+          defHtml = `<div class="section-block" style="border-left-color:#8b5cf6;">
+            <h5>Potassium Recovery Plan:</h5>
+            <p>Apply Muriate of Potash (MOP - 60% K2O) or Potassium Sulfate (SOP) at 50-80 kg/ha to restore stalk strength and disease immunity.</p>
+          </div>`;
+          break;
+        case "zinc":
+          defHtml = `<div class="section-block" style="border-left-color:#10b981;">
+            <h5>Zinc Deficiency Recovery Plan:</h5>
+            <p>Soil application of Zinc Sulphate heptahydrate (ZnSO4 21%) at 25 kg/ha at sowing, or foliar spray 0.5% ZnSO4 + 0.25% lime.</p>
+          </div>`;
+          break;
+        case "calcium":
+          defHtml = `<div class="section-block" style="border-left-color:#ef4444;">
+            <h5>Calcium Recovery Plan:</h5>
+            <p>Foliar spray 0.3% Calcium Nitrate during flowering and fruit development. Prevents Blossom End Rot in Tomato/Pepper.</p>
+          </div>`;
+          break;
+        default:
+          defHtml = "";
+      }
+
+      resultsContainer.innerHTML = `
+        <div class="section-block">${phDiagnosis}</div>
+        <div class="section-block">${amendment}</div>
+        ${defHtml}
+        <div class="section-block">
+          <h5>Recommended Crops for this Rebalanced Profile</h5>
+          <p><strong>Top Suited:</strong> ${cropList}</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
